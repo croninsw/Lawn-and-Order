@@ -1,7 +1,7 @@
 import APIManager from "./APIManager"
 
 export default Object.create(APIManager, {
-    value: {
-        desiredDatabase: "plots"
+    desiredDatabase: {
+        value: "plots"
     }
 })
