@@ -9,7 +9,7 @@ export default class UserAccessLayer extends Component {
   }
 
   componentDidMount() {
-    UserManager.get(this.activeUserId()).then(activeUser =>
+    UserManager.getOne(this.activeUserId()).then(activeUser =>
       this.setState({ activeUser: activeUser })
     )
   }
