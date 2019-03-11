@@ -23,7 +23,7 @@ export default class PlotForm extends Component {
         evt.preventDefault();
 
         const plot = {
-            // userId: parseInt(sessionStorage.getItem("credentials")),
+            userId: parseInt(sessionStorage.getItem("credentials")),
             address: this.state.address,
             image: this.state.image,
             total_sqFeet: this.state.total_sqFeet,
