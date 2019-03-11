@@ -7,7 +7,10 @@ import ToolManager from "../Modules/ToolManager"
 import Login from "./Login/Login"
 import PlotList from "./Plots/PlotList"
 import PlotForm from "./Plots/PlotForm"
+import PlotEditForm from "./Plots/PlotEditForm"
 import UserList from "./Users/UserList"
+import ResourceList from "./Resources/ResourceList"
+import PlotCard from "./Plots/PlotCard";
 
 export default class ApplicationViews extends Component {
 
@@ -48,8 +51,8 @@ export default class ApplicationViews extends Component {
             <React.Fragment>
                 <Route exact path="/login" component={Login} />
 
-                <Route exact path="/plots/" render={(props) => {
-                    return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                <Route exact path="/plots" render={(props) => {
+                    return <PlotCard plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
                 }}
                 />
 
@@ -57,21 +60,22 @@ export default class ApplicationViews extends Component {
                     return <PlotList plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
                 }}
                 />
-
                 <Route exact path="/plots/new" render={(props) => {
                     return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
                 }}
                 />
-
+                <Route exact path="/plots/:plotId(\d+)/edit" render={(props) => {
+                    return <PlotEditForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                }}
+                />
                 <Route exact path="/users" render={(props) => {
                     return <UserList plots={this.state.users} {...props} />
                 }}
                 />
-
-                <Route exact path="/resources" render={(props) => {
-                    return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                {/* <Route exact path="/resources" render={(props) => {
+                    return <ResourceList plots={this.state.resources} {...props} />
                 }}
-                />
+                /> */}
             </React.Fragment>
         )
     }

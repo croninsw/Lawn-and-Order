@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import NavBar from "./Nav/Nav"
-import ApplicationViews from "./ApplicationViews"
 import IsAuthorized from "./Login/isAuthorized";
 
 export default class Lawn_Order extends Component {
@@ -19,8 +17,6 @@ export default class Lawn_Order extends Component {
     render() {
         return (<React.Fragment>
             <IsAuthorized isAuthenticated={this.isAuthenticated} setAuth={this.setAuth} />
-            <NavBar />
-            <ApplicationViews />
         </React.Fragment>
         )
     }
