@@ -5,6 +5,9 @@ import PlotManager from "../Modules/PlotManager"
 import BookingManager from "../Modules/BookingManager"
 import ToolManager from "../Modules/ToolManager"
 import Login from "./Login/Login"
+import PlotList from "./Plots/PlotList"
+import PlotForm from "./Plots/PlotForm"
+import UserList from "./Users/UserList"
 
 export default class ApplicationViews extends Component {
 
@@ -45,8 +48,28 @@ export default class ApplicationViews extends Component {
             <React.Fragment>
                 <Route exact path="/login" component={Login} />
 
-                <Route exact path="/plotSearch" render={(props) => {
-                    return <PlotList dashboard={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
+                <Route exact path="/plots/" render={(props) => {
+                    return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                }}
+                />
+
+                <Route exact path="/plots/search" render={(props) => {
+                    return <PlotList plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
+                }}
+                />
+
+                <Route exact path="/plots/new" render={(props) => {
+                    return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                }}
+                />
+
+                <Route exact path="/users" render={(props) => {
+                    return <UserList plots={this.state.users} {...props} />
+                }}
+                />
+
+                <Route exact path="/resources" render={(props) => {
+                    return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
                 }}
                 />
             </React.Fragment>

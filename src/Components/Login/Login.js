@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import UserManager from "../../modules/UserManager"
+import UserManager from "../../Modules/UserManager"
 
 export default class Login extends Component {
   // Set initial state

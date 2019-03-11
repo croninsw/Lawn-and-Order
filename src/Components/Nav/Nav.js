@@ -2,26 +2,36 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 export default class NavBar extends Component {
+    logout = () => {
+        sessionStorage.clear("credentials")
+        this.props.setAuth()
+    }
+
     render() {
         return (
-            <nav className="">
+            <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/">Lawn & Order</Link>
                     </li>
                     <li>
-                        <Link to="/plotSearch">Search</Link>
+                        <Link to="/plots/search">Search</Link>
                     </li>
                     <li>
-                        <Link to="/myYards">My Yards</Link>
+                        <Link to="/plots">My Yards</Link>
                     </li>
                     <li>
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/users">Profile</Link>
                     </li>
                     <li>
                         <Link to="/resources">Resources</Link>
                     </li>
                 </ul>
+                <button
+                type="button"
+                className="logout-btn"
+                onClick={this.logout}>
+                </button>
             </nav>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import NavBar from "./nav/NavBar"
+import NavBar from "./Nav/Nav"
 import ApplicationViews from "./ApplicationViews"
 
 
