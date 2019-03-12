@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import PlotManager from "../../Modules/PlotManager";
 
-export default class PlotForm extends Component {
+export default class PlotEditForm extends Component {
     // Set initial state
     state = {
-        userId: [],
-        address: [],
-        image: [],
-        total_sqFeet: [],
-        avail_sqFeet: [],
-        notes: []
+        userId: "",
+        address: "",
+        image: "",
+        total_sqFeet: "",
+        avail_sqFeet: "",
+        notes: ""
     }
 
     // Update state whenever an input field is edited
@@ -22,9 +22,9 @@ export default class PlotForm extends Component {
     updateExistingPlot = evt => {
         evt.preventDefault();
 
-        const plot = {
+        const editedPlot = {
             id: this.props.match.params.plotId,
-            userId: this.state.userId,
+            userId: parseInt(sessionStorage.getItem("credentials")),
             address: this.state.address,
             image: this.state.image,
             total_sqFeet: this.state.total_sqFeet,
@@ -34,8 +34,8 @@ export default class PlotForm extends Component {
 
         // Create the plot and redirect user to plot list
         this.props
-            .addPlot(plot)
-            .then(() => this.props.history.push("/plots/Search"));
+            .editPlot(editedPlot)
+            .then(() => this.props.history.push("/plots"));
     }
 
     componentDidMount() {
@@ -57,7 +57,7 @@ export default class PlotForm extends Component {
             <React.Fragment>
                 <form className="plotForm">
                     <div className="form-group">
-                        <label htmlFor="animalName">Plot Address</label>
+                        <label htmlFor="plotAddress">Plot Address</label>
                         <input
                             type="text"
                             required
@@ -65,10 +65,11 @@ export default class PlotForm extends Component {
                             onChange={this.handleFieldChange}
                             id="address"
                             placeholder="500 Interstate Blvd S"
+                            value={this.state.address}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Image</label>
+                        <label htmlFor="image">Image</label>
                         <input
                             type="text"
                             required
@@ -76,10 +77,11 @@ export default class PlotForm extends Component {
                             onChange={this.handleFieldChange}
                             id="image"
                             placeholder="Image url"
+                            value={this.state.image}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Total Square Feet</label>
+                        <label htmlFor="total_sqFeet">Total Square Feet</label>
                         <input
                             type="text"
                             required
@@ -87,10 +89,11 @@ export default class PlotForm extends Component {
                             onChange={this.handleFieldChange}
                             id="total_sqFeet"
                             placeholder=""
+                            value={this.state.total_sqFeet}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Available Square Feet</label>
+                        <label htmlFor="avail_sqFeet">Available Square Feet</label>
                         <input
                             type="text"
                             required
@@ -98,10 +101,11 @@ export default class PlotForm extends Component {
                             onChange={this.handleFieldChange}
                             id="avail_sqFeet"
                             placeholder=""
+                            value={this.state.avail_sqFeet}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Notes</label>
+                        <label htmlFor="notes">Notes</label>
                         <input
                             type="text"
                             required
@@ -109,6 +113,7 @@ export default class PlotForm extends Component {
                             onChange={this.handleFieldChange}
                             id="notes"
                             placeholder=""
+                            value={this.state.notes}
                         />
                     </div>
 

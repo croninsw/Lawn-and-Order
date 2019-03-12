@@ -34,7 +34,7 @@ export default class PlotForm extends Component {
         // Create the animal and redirect user to animal list
         this.props
             .addPlot(plot)
-            .then(() => this.props.history.push("/plots/Search"));
+            .then(() => this.props.history.push("/plots"));
     }
 
     render() {
@@ -42,7 +42,7 @@ export default class PlotForm extends Component {
             <React.Fragment>
                 <form className="plotForm">
                     <div className="form-group">
-                        <label htmlFor="animalName">Plot Address</label>
+                        <label htmlFor="plotAdress">Plot Address</label>
                         <input
                             type="text"
                             required
@@ -53,7 +53,7 @@ export default class PlotForm extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Image</label>
+                        <label htmlFor="image">Image</label>
                         <input
                             type="text"
                             required
@@ -64,7 +64,7 @@ export default class PlotForm extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Total Square Feet</label>
+                        <label htmlFor="total_sqFeet">Total Square Feet</label>
                         <input
                             type="text"
                             required
@@ -75,7 +75,7 @@ export default class PlotForm extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Available Square Feet</label>
+                        <label htmlFor="avail_sqFeet">Available Square Feet</label>
                         <input
                             type="text"
                             required
@@ -86,7 +86,7 @@ export default class PlotForm extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Notes</label>
+                        <label htmlFor="notes">Notes</label>
                         <input
                             type="text"
                             required

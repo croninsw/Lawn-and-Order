@@ -52,7 +52,7 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/login" component={Login} />
 
                 <Route exact path="/plots" render={(props) => {
-                    return <PlotCard plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
+                    return <PlotList plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
                 }}
                 />
 
@@ -65,7 +65,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/plots/:plotId(\d+)/edit" render={(props) => {
-                    return <PlotEditForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                    return <PlotEditForm plots={this.state.plots} {...props} editPlot={this.editPlot} />
                 }}
                 />
                 <Route exact path="/users" render={(props) => {
