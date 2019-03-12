@@ -15,7 +15,7 @@ export default class PlotList extends Component {
                 <section className="plots">
                 {
                     this.props.plots.map(plot =>
-                        <PlotCard key={plot.id} plot={plot} {...this.props} history={this.props.history} />
+                        <PlotCard key={plot.id} plot={plot} {...this.props} />
                     )
                 }
                 </section>
