@@ -36,6 +36,13 @@ export default class ApplicationViews extends Component {
         .then(plots => this.setState({plots: plots}))
     }
 
+    // addUserAsFriend = id => {
+    //     return UserManager.getOne(id)
+    //     .then
+    // }
+
+        isAuthorized = () => sessionStorage.getItem("credentials") !== null
+
     componentDidMount() {
         UserManager.getAll().then(users => this.setState({users: users}))
 
@@ -55,10 +62,10 @@ export default class ApplicationViews extends Component {
                     return <PlotList plots={this.state.plots} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} />
                 }}
                 />
-                {/* <Route exact path="/plots/search" render={(props) => {
+                <Route exact path="/plots/search" render={(props) => {
                     return <PlotSearch plots={this.state.plots} {...props} />
                 }}
-                /> */}
+                />
                 <Route exact path="/plots/new" render={(props) => {
                     return <PlotForm {...props} addPlot={this.addPlot} />
                 }}
@@ -68,7 +75,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/users" render={(props) => {
-                    return <UserList plots={this.state.users} {...props} />
+                    return <UserList users={this.state.users} {...props} />
                 }}
                 />
                 {/* <Route exact path="/resources" render={(props) => {
@@ -79,3 +86,4 @@ export default class ApplicationViews extends Component {
         )
     }
 }
+
