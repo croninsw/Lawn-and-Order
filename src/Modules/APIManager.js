@@ -36,8 +36,8 @@ export default Object.create(null, {
     },
 
     put: {
-        value: function(id ,obj) {
-            return fetch(`${Settings.remoteURL}/${this.desiredDatabase}/${id}`, {
+        value: function(obj) {
+            return fetch(`${Settings.remoteURL}/${this.desiredDatabase}/${obj.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
