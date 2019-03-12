@@ -16,6 +16,8 @@ export default class UserAccessLayer extends Component {
 
   activeUserId = () => parseInt(sessionStorage.getItem("credentials"))
 
+
+
   render() {
     return (
       <React.Fragment>

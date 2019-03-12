@@ -10,7 +10,7 @@ import PlotForm from "./Plots/PlotForm"
 import PlotEditForm from "./Plots/PlotEditForm"
 import UserList from "./Users/UserList"
 import ResourceList from "./Resources/ResourceList"
-import PlotCard from "./Plots/PlotCard";
+import PlotSearch from "./Plots/PlotSearch"
 
 export default class ApplicationViews extends Component {
 
@@ -36,10 +36,17 @@ export default class ApplicationViews extends Component {
         .then(plots => this.setState({plots: plots}))
     }
 
+    // addUserAsFriend = id => {
+    //     return UserManager.getOne(id)
+    //     .then
+    // }
+
+        isAuthorized = () => sessionStorage.getItem("credentials") !== null
+
     componentDidMount() {
         UserManager.getAll().then(users => this.setState({users: users}))
 
-        PlotManager.getAll().then(plots => this.setState({plots: plots}))
+        PlotManager.getSorted().then(plots => this.setState({plots: plots}))
 
         BookingManager.getAll().then(bookings => this.setState({bookings: bookings}))
 
@@ -52,16 +59,15 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/login" component={Login} />
 
                 <Route exact path="/plots" render={(props) => {
-                    return <PlotList plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
+                    return <PlotList plots={this.state.plots} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} />
                 }}
                 />
-
                 <Route exact path="/plots/search" render={(props) => {
-                    return <PlotList plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} />
+                    return <PlotSearch plots={this.state.plots} {...props} />
                 }}
                 />
                 <Route exact path="/plots/new" render={(props) => {
-                    return <PlotForm plots={this.state.plots} {...props} addPlot={this.addPlot} />
+                    return <PlotForm {...props} addPlot={this.addPlot} />
                 }}
                 />
                 <Route exact path="/plots/:plotId(\d+)/edit" render={(props) => {
@@ -69,7 +75,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/users" render={(props) => {
-                    return <UserList plots={this.state.users} {...props} />
+                    return <UserList users={this.state.users} {...props} />
                 }}
                 />
                 {/* <Route exact path="/resources" render={(props) => {
@@ -80,3 +86,4 @@ export default class ApplicationViews extends Component {
         )
     }
 }
+
