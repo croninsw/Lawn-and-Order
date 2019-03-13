@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
 
 export default class PlotForm extends Component {
     // Set initial state
     state = {
         userId: [],
+        gardenerId: [],
         address: [],
-        image: [],
         total_sqFeet: [],
         avail_sqFeet: [],
-        notes: []
+        notes: [],
+        image: []
     }
 
     // Update state whenever an input field is edited
@@ -24,11 +26,12 @@ export default class PlotForm extends Component {
 
         const plot = {
             userId: parseInt(sessionStorage.getItem("credentials")),
+            gardenerId: null,
             address: this.state.address,
-            image: this.state.image,
             total_sqFeet: this.state.total_sqFeet,
             avail_sqFeet: this.state.avail_sqFeet,
-            notes: this.state.notes
+            notes: this.state.notes,
+            image: this.state.image
         }
 
         // Create the animal and redirect user to animal list
@@ -40,71 +43,61 @@ export default class PlotForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <form className="plotForm">
-                    <div className="form-group">
-                        <label htmlFor="plotAdress">Plot Address</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={this.handleFieldChange}
-                            id="address"
-                            placeholder="500 Interstate Blvd S"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="image">Image</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={this.handleFieldChange}
-                            id="image"
-                            placeholder="Image url"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="total_sqFeet">Total Square Feet</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={this.handleFieldChange}
-                            id="total_sqFeet"
-                            placeholder=""
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="avail_sqFeet">Available Square Feet</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={this.handleFieldChange}
-                            id="avail_sqFeet"
-                            placeholder=""
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="notes">Notes</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={this.handleFieldChange}
-                            id="notes"
-                            placeholder=""
-                        />
-                    </div>
+                <Form>
+                    <legend>Add New Yard Plot</legend>
+                    <FormGroup>
+                        <Label for="address">Address</Label>
+                        <Input type="address" name="address" id="address" placeholder="" onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="total_sqFeet">Total Footage</Label>
+                        <Input type="total_sqFeet" name="total_sqFeet" id="total_sqFeet" placeholder="" onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="avail_sqFeet">Available Footage</Label>
+                        <Input type="avail_sqFeet" name="avail_sqFeet" id="avail_sqFeet" placeholder="" onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="notes">Yard Notes</Label>
+                        <Input type="notes" name="notes" id="notes" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="image">File</Label>
+                        <Input type="file" name="image" id="image" />
+                        <FormText color="muted">
+                            Photos of the plot and property to highlight amenities and layout.
+</FormText>
 
-                    <button
-                        type="submit"
-                        onClick={this.constructNewPlot}
-                        className="btn btn-primary"
-                    >
-                        Submit New Plot
-          </button>
-                </form>
+                    </FormGroup>
+                    {/* <FormGroup tag="fieldset">
+                        <legend>Preferred Garden Bounty</legend>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" />{' '}
+                            Any / All
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" />{' '}
+                            Fruit
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" />{' '}
+                            Vegetables
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" />{' '}
+                            Flowers
+                        </Label>
+                    </FormGroup> */}
+                    <Button onClick={this.constructNewPlot}>Submit</Button>
+                </Form>
             </React.Fragment>
         );
     }

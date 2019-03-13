@@ -4,6 +4,7 @@ import PlotCard from "./PlotCard"
 export default class PlotList extends Component {
     render () {
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
+
         return (
             <React.Fragment>
                 <div className="">
@@ -15,8 +16,8 @@ export default class PlotList extends Component {
                 </div>
                 <section className="plots">
                 {
-                    this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
-                        <PlotCard key={plot.id} plot={plot} {...this.props} />
+                    this.props.plots.filter(plots => plots.gardenerId === activeUser).map(plot =>
+                        <PlotCard key={plot.id} plot={plot} {...this.props} patchPlot={this.props.patchPlot} />
                     )
                 }
                 </section>

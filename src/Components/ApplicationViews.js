@@ -10,6 +10,7 @@ import PlotForm from "./Plots/PlotForm"
 import PlotEditForm from "./Plots/PlotEditForm"
 import UserList from "./Users/UserList"
 import ResourceList from "./Resources/ResourceList"
+import ToolForm from "./Resources/ToolForm"
 import PlotSearch from "./Plots/PlotSearch"
 
 export default class ApplicationViews extends Component {
@@ -23,47 +24,61 @@ export default class ApplicationViews extends Component {
 
     addPlot = newPlot => {
         return PlotManager.post(newPlot)
-        .then(() => PlotManager.getAll())
-        .then(plots => this.setState({plots: plots}))
+            .then(() => PlotManager.getAll())
+            .then(plots => this.setState({ plots: plots }))
     }
     editPlot = editedPlot => {
-        return PlotManager.put(editedPlot)
-        .then(() => PlotManager.getAll())
-        .then(plots => this.setState({plots: plots}))
+        return PlotManager.patch(editedPlot)
+            .then(() => PlotManager.getAll())
+            .then(plots => this.setState({ plots: plots }))
     }
     deletePlot = id => {
         return PlotManager.deleteAndList(id)
-        .then(plots => this.setState({plots: plots}))
+            .then(plots => this.setState({ plots: plots }))
     }
 
-    // addUserAsFriend = id => {
-    //     return UserManager.getOne(id)
-    //     .then
-    // }
+    patchPlot = (claimedPlot) => {
+        return PlotManager.patch(claimedPlot)
+            .then(() => {
+                return PlotManager.getAll();
+            })
+            .then(plots => this.setState({ plots: plots }));
+    }
 
-        isAuthorized = () => sessionStorage.getItem("credentials") !== null
+    addTool = newTool => {
+        return ToolManager.post(newTool)
+            .then(() => ToolManager.getAll())
+            .then(tools => this.setState({ tools: tools }))
+    }
+
+    deleteTool = id => {
+        return ToolManager.deleteAndList(id)
+            .then(tools => this.setState({ tools: tools }))
+    }
+
+    isAuthorized = () => sessionStorage.getItem("credentials") !== null
 
     componentDidMount() {
-        UserManager.getAll().then(users => this.setState({users: users}))
+        UserManager.getAll().then(users => this.setState({ users: users }))
 
-        PlotManager.getSorted().then(plots => this.setState({plots: plots}))
+        PlotManager.getSorted().then(plots => this.setState({ plots: plots }))
 
-        BookingManager.getAll().then(bookings => this.setState({bookings: bookings}))
+        BookingManager.getAll().then(bookings => this.setState({ bookings: bookings }))
 
-        ToolManager.getAll().then(tools => this.setState({tools: tools}))
+        ToolManager.getAll().then(tools => this.setState({ tools: tools }))
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
                 <Route exact path="/login" component={Login} />
 
                 <Route exact path="/plots" render={(props) => {
-                    return <PlotList plots={this.state.plots} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} />
+                    return <PlotList plots={this.state.plots} users={this.state.users} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} />
                 }}
                 />
                 <Route exact path="/plots/search" render={(props) => {
-                    return <PlotSearch plots={this.state.plots} {...props} />
+                    return <PlotSearch plots={this.state.plots} {...props} editPlot={this.editPlot} deletePlot={this.deletePlot} patchPlot={this.patchPlot}/>
                 }}
                 />
                 <Route exact path="/plots/new" render={(props) => {
@@ -74,14 +89,18 @@ export default class ApplicationViews extends Component {
                     return <PlotEditForm plots={this.state.plots} {...props} editPlot={this.editPlot} />
                 }}
                 />
-                <Route exact path="/users" render={(props) => {
+                <Route exact path="/profile" render={(props) => {
                     return <UserList users={this.state.users} {...props} />
                 }}
                 />
-                {/* <Route exact path="/resources" render={(props) => {
-                    return <ResourceList plots={this.state.resources} {...props} />
+                <Route exact path="/resources" render={(props) => {
+                    return <ResourceList tools={this.state.tools} {...props} deleteTool={this.deleteTool} />
                 }}
-                /> */}
+                />
+                <Route exact path="/tools/new" render={(props) => {
+                    return <ToolForm {...props} addTool={this.addTool} />
+                }}
+                />
             </React.Fragment>
         )
     }
