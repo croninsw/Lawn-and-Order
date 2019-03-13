@@ -5,7 +5,8 @@ export default class Login extends Component {
   // Set initial state
   state = {
     username: "",
-    password: ""
+    password: "",
+    role: ""
   }
 
   handleFieldChange = evt => {
@@ -18,15 +19,18 @@ export default class Login extends Component {
     event.preventDefault()
     const newUser = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      role: this.state.role
     }
     if (this.state.username && this.state.password) {
         UserManager.searchUsername(this.state.username).then(users => {
+          // Check to see if object has any entries
         if (users.length) {
           alert(`Username ${this.state.username} already exits!`)
         } else {
           UserManager.post(newUser).then(user => {
             sessionStorage.setItem("credentials", parseInt(user.id))
+            sessionStorage.setItem("role", this.state.role)
             this.props.setAuth()
           })
         }
@@ -75,6 +79,16 @@ export default class Login extends Component {
           placeholder={"Password"}
           required=""
         />
+        <label htmlFor="inputRole">Role</label>
+        <select onChange={this.handleFieldChange}
+                type="role"
+                id="role"
+                placeholder={"Role"}
+                required="">
+          <option id="null">Please Select Role</option>
+          <option id="homeowner">Homeowner</option>
+          <option id="gardener">Gardener</option>
+        </select>
         <button type="submit" onClick={this.handleLogin}>
           Sign in
         </button>

@@ -70,5 +70,18 @@ export default Object.create(null, {
             return fetch(`${Settings.remoteURL}/${this.desiredDatabase}?username=${username}`)
             .then(r => r.json())
         }
-    }
+    },
+
+    patch: {
+        value: function (obj) {
+          return fetch(`${Settings.remoteURL}/${this.desiredDatabase}/${obj.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(obj)
+          })
+            .then(r => r.json())
+        }
+      }
 })
