@@ -12,6 +12,8 @@ import UserList from "./Users/UserList"
 import ResourceList from "./Resources/ResourceList"
 import ToolForm from "./Resources/ToolForm"
 import PlotSearch from "./Plots/PlotSearch"
+import PlotDetail from "./Plots/PlotDetail"
+import Home from "./Home/Home"
 
 export default class ApplicationViews extends Component {
 
@@ -73,12 +75,17 @@ export default class ApplicationViews extends Component {
             <React.Fragment>
                 <Route exact path="/login" component={Login} />
 
+                <Route exact path="/" render={(props) => {
+                    return <Home {...props} />
+                }}
+                />
+
                 <Route exact path="/plots" render={(props) => {
                     return <PlotList plots={this.state.plots} users={this.state.users} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} />
                 }}
                 />
                 <Route exact path="/plots/search" render={(props) => {
-                    return <PlotSearch plots={this.state.plots} {...props} editPlot={this.editPlot} deletePlot={this.deletePlot} patchPlot={this.patchPlot}/>
+                    return <PlotSearch plots={this.state.plots} {...props}  />
                 }}
                 />
                 <Route exact path="/plots/new" render={(props) => {
@@ -87,6 +94,10 @@ export default class ApplicationViews extends Component {
                 />
                 <Route exact path="/plots/:plotId(\d+)/edit" render={(props) => {
                     return <PlotEditForm plots={this.state.plots} {...props} editPlot={this.editPlot} />
+                }}
+                />
+                <Route exact path="/plots/detail/:plotId(\d+)" render={(props) => {
+                    return <PlotDetail plots={this.state.plots} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot}/>
                 }}
                 />
                 <Route exact path="/profile" render={(props) => {

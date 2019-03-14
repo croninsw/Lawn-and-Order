@@ -1,0 +1,12 @@
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    padding: 2.5%;
+
+}
+
+  .tool {
+    flex-grow: 1;
+    min-width: 25%;
+  }

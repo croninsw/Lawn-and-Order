@@ -55,23 +55,11 @@ export default class NavBar extends Component {
                             <NavItem>
                                 <NavLink href="/resources">Resources</NavLink>
                             </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Options
-        </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        About
-          </DropdownItem>
-                                    <DropdownItem>
-                                        Contact
-          </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem onClick={this.logout}>
-                                        Logout
-          </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
+                            <DropdownItem divider />
+                            <NavItem>
+                                <NavLink onClick={this.logout}>Logout</NavLink>
+                            </NavItem>
+
                         </Nav>
                     </Collapse>
                 </Navbar>

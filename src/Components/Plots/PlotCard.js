@@ -1,53 +1,31 @@
 import React, { Component } from "react"
+import {
+    Card, CardImg, CardBody,
+    CardTitle, CardSubtitle, Button
+} from "reactstrap"
 
 export default class PlotCard extends Component {
-    state = {
-        gardenerId: null
-    }
-    claimYard = (id) => {
-        const claimedPlot = {
-            id: id,
-            gardenerId: parseInt(sessionStorage.getItem("credentials"))
-        }
 
-        this.props.patchPlot(claimedPlot)
-            .then(() => this.props.history.push("/plots"))
-    }
 
     render() {
         const plot = this.props.plot
-        const activeUser = parseInt(sessionStorage.getItem("credentials"))
-        const role = sessionStorage.getItem("role")
+
         return (
             <React.Fragment>
-                <section className="plot">
-                    <div key={plot.id} className="">
-                        <div className="">
-                            <h5 className="">{plot.address}</h5>
-                            <div>{plot.total_sqFeet}</div>
-                            <div>{plot.avail_sqFeet}</div>
-                            <div>{plot.notes}</div>
-                            <img src={plot.img} className="plot_img" />
-
-                            <button type="button"
-                                className=""
-                                onClick={() => this.props.deletePlot(plot.id)}
-                                className="">Delete</button>
-                            <button type="button"
-                                className=""
-                                onClick={() => {
-                                    this.props.history.push(`/plots/${this.props.plot.id}/edit`)
-                                }}
-                            >Edit</button>
-                            <button type="button"
-                                className=""
-                                onClick={() => this.claimYard(plot.id)}
-                                className="">Claim Yard</button>
-                        </div>
-                    </div>
-                </section>
-            </React.Fragment>
+                <div>
+                    <Card key={plot.id}>
+                        <CardImg top width="100%" src={(plot.image)} alt="Plot image" />
+                        <CardBody>
+                            <CardTitle>{plot.address}</CardTitle>
+                            <CardSubtitle>{plot.total_sqFeet}</CardSubtitle>
+                            <CardSubtitle>{plot.avail_sqFeet}</CardSubtitle>
+                            <Button onClick={() => this.props.history.push(`/plots/detail/${plot.id}`)}>View Details</Button>
+                        </CardBody>
+                    </Card>
+                </div>
+            </React.Fragment >
         )
     }
 }
+
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PlotManager from "../../Modules/PlotManager";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
+import "./Plot.css"
 
 export default class PlotEditForm extends Component {
     // Set initial state

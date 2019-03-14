@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import ToolCard from "./ToolCard"
+import "../Tools/Tool.css"
 
 export default class ResourceList extends Component {
     render() {
