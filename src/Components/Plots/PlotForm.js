@@ -10,7 +10,11 @@ export default class PlotForm extends Component {
         total_sqFeet: [],
         avail_sqFeet: [],
         notes: [],
-        image: []
+        image: [],
+        any_all: false,
+        fruit: false,
+        vegetables: false,
+        flowers: false
     }
 
     // Update state whenever an input field is edited
@@ -21,8 +25,10 @@ export default class PlotForm extends Component {
     }
 
 
+
+
     constructNewPlot = evt => {
-        evt.preventDefault();
+        evt.preventDefault()
 
         const plot = {
             userId: parseInt(sessionStorage.getItem("credentials")),
@@ -31,13 +37,17 @@ export default class PlotForm extends Component {
             total_sqFeet: this.state.total_sqFeet,
             avail_sqFeet: this.state.avail_sqFeet,
             notes: this.state.notes,
-            image: this.state.image
+            image: this.state.image,
+            any_all: false,
+            fruit: false,
+            vegetables: false,
+            flowers: false
         }
 
         // Create the animal and redirect user to animal list
         this.props
             .addPlot(plot)
-            .then(() => this.props.history.push("/plots"));
+            .then(() => this.props.history.push("/plots/search"))
     }
 
     render() {
@@ -59,40 +69,45 @@ export default class PlotForm extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="notes">Yard Notes</Label>
-                        <Input type="notes" name="notes" id="notes" />
+                        <Input type="notes" name="notes" id="notes" onChange={this.handleFieldChange}/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="image">File</Label>
-                        <Input type="file" name="image" id="image" />
+                        <Input type="file" name="image" id="image" onChange={this.handleFieldChange}/>
                         <FormText color="muted">
                             Photos of the plot and property to highlight amenities and layout.
 </FormText>
 
                     </FormGroup>
-                    {/* <FormGroup tag="fieldset">
+                    <FormGroup tag="fieldset">
                         <legend>Preferred Garden Bounty</legend>
                     </FormGroup>
-                    <FormGroup check>
+                    {/* <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" />{' '}
+                            <Input type="checkbox"  name="bountyType"
+                            onClick={() => this.handleInputChange}/>{' '}
                             Any / All
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" />{' '}
+                            <Input type="checkbox"  name="bountyType"
+                            onClick={() => this.handleInputChange}/>{' '}
                             Fruit
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" />{' '}
+                            <Input type="checkbox"  name="bountyType"
+                            onClick={() => this.handleInputChange}/>{' '}
                             Vegetables
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" />{' '}
+                            <Input type="checkbox"
+                            name="bountyType"
+                            onClick={() => this.handleInputChange}/>{' '}
                             Flowers
                         </Label>
                     </FormGroup> */}
