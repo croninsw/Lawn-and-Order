@@ -1,5 +1,10 @@
 import React, { Component } from "react"
 import UserManager from "../../Modules/UserManager"
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+} from "reactstrap"
 
 export default class Login extends Component {
   // Set initial state
@@ -59,44 +64,53 @@ export default class Login extends Component {
     }
   }
 
-  render() {
-    return (
-      <form className="loginForm">
-        <h1 className="">Sign In</h1>
-        <label htmlFor="inputUsername">Username</label>
-        <input
-          onChange={this.handleFieldChange}
-          type="username"
-          id="username"
-          placeholder={"Username"}
-          required=""
-          autoFocus=""
-        />
-        <label htmlFor="inputPassword">Password</label>
-        <input
-          onChange={this.handleFieldChange}
-          type="password"
-          id="password"
-          placeholder={"Password"}
-          required=""
-        />
-        <label htmlFor="inputRole">Role</label>
-        <select onChange={this.handleFieldChange}
-                type="role"
-                id="role"
-                placeholder={"Role"}
-                required="">
-          <option id="null">Please Select Role</option>
-          <option id="homeowner">Homeowner</option>
-          <option id="gardener">Gardener</option>
-        </select>
-        <button type="submit" onClick={this.handleLogin}>
-          Sign in
-        </button>
-        <button type="submit" onClick={this.handleRegister}>
-          Register
-        </button>
-      </form>
-    )
-  }
+render() {
+  return (
+    <Container className="App">
+      <h2>Sign In</h2>
+      <Form className="form">
+        <Col>
+          <FormGroup>
+            <Label for="username">Username</Label>
+            <Input
+              type="username"
+              name="username"
+              id="username"
+              placeholder={"username"}
+              onChange={this.handleFieldChange}
+            />
+          </FormGroup>
+        </Col>
+        <Col>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              placeholder={"password"}
+              onChange={this.handleFieldChange}
+            />
+          </FormGroup>
+        </Col>
+        <Col>
+          <FormGroup>
+            <Label for="role">Role</Label>
+      <select onChange={this.handleFieldChange}
+              type="role"
+              id="role"
+              placeholder={"Role"}
+              required="">
+        <option id="null">Please Select Role</option>
+        <option id="homeowner">Homeowner</option>
+        <option id="gardener">Gardener</option>
+      </select>
+          </FormGroup>
+        </Col>
+        <Button type="submit" onClick={this.handleLogin}>Sign In</Button>
+        <Button type="submit" onClick={this.handleRegister}>Register</Button>
+      </Form>
+    </Container>
+  )
+}
 }
