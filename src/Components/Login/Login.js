@@ -5,6 +5,8 @@ import {
   FormGroup, Label, Input,
   Button,
 } from "reactstrap"
+import "./Login.css"
+import grass from "../Images/Grass.png"
 
 export default class Login extends Component {
   // Set initial state
@@ -68,8 +70,8 @@ export default class Login extends Component {
 
 render() {
   return (
-    <Container className="App">
-      <h2>Sign In</h2>
+    <Container className="loginContainer clearfix">
+      <h2 className="title">Sign In</h2>
       <Form className="form">
         <Col>
           <FormGroup>
@@ -77,6 +79,7 @@ render() {
             <Input
               type="username"
               name="username"
+              className="title"
               id="username"
               placeholder={"username"}
               onChange={this.handleFieldChange}
@@ -90,6 +93,7 @@ render() {
             <Input
               type="password"
               name="password"
+              className="title"
               id="password"
               placeholder={"password"}
               onChange={this.handleFieldChange}
@@ -110,10 +114,12 @@ render() {
       </select>
           </FormGroup>
         </Col>
-        <Button type="submit" onClick={this.handleLogin}>Sign In</Button>
-        <Button type="submit" onClick={this.handleRegister}>Register</Button>
+        <Button type="submit" className="login-btn" onClick={this.handleLogin}>Sign In</Button>
+        <Button type="submit" className="login-btn" onClick={this.handleRegister}>Register</Button>
       </Form>
+      <img src={grass} className="footer--grass" />
     </Container>
   )
 }
+
 }

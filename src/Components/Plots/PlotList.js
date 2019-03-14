@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import PlotCard from "./PlotCard"
 import { Button } from "reactstrap"
+import "./Plot.css"
 
 export default class PlotList extends Component {
     render() {
@@ -9,6 +10,14 @@ export default class PlotList extends Component {
 
         return (
             <React.Fragment>
+                <div className="body">
+                <h2 className="title__text">
+                    My Yards
+                </h2>
+                <h5>
+                    Add a new yard, yard maintenance, and general stuff
+                </h5>
+
                 <div className="">
                     {role === "Homeowner" ?
                         <Button type="button"
@@ -26,6 +35,7 @@ export default class PlotList extends Component {
                             )
                         }
                     </section>
+                </div>
                 </div>
             </React.Fragment>
         )

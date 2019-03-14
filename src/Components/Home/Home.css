@@ -1,0 +1,10 @@
+html {
+    background-color: #F7FFF8;
+}
+
+.maps {
+    width: 60%;
+    height: 60%;
+    float: right;
+    padding: 20px;
+}

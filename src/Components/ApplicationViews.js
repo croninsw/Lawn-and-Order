@@ -12,7 +12,8 @@ import UserList from "./Users/UserList"
 import ResourceList from "./Resources/ResourceList"
 import ToolForm from "./Resources/ToolForm"
 import PlotSearch from "./Plots/PlotSearch"
-import PlotDetail from "./Plots/PlotDetail";
+import PlotDetail from "./Plots/PlotDetail"
+import Home from "./Home/Home"
 
 export default class ApplicationViews extends Component {
 
@@ -73,6 +74,11 @@ export default class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/login" component={Login} />
+
+                <Route exact path="/" render={(props) => {
+                    return <Home {...props} />
+                }}
+                />
 
                 <Route exact path="/plots" render={(props) => {
                     return <PlotList plots={this.state.plots} users={this.state.users} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} />
