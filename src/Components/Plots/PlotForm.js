@@ -30,8 +30,11 @@ export default class PlotForm extends Component {
     constructNewPlot = evt => {
         evt.preventDefault()
 
+        const role = sessionStorage.getItem("role")
+        const activeUser = parseInt(sessionStorage.getItem("credentials"))
+
         const plot = {
-            userId: parseInt(sessionStorage.getItem("credentials")),
+            userId: activeUser,
             gardenerId: null,
             address: this.state.address,
             total_sqFeet: this.state.total_sqFeet,
@@ -44,10 +47,10 @@ export default class PlotForm extends Component {
             flowers: false
         }
 
-        // Create the animal and redirect user to animal list
+        {role === "Homeowner" ? this.props.addPlot(plot).then(() => this.props.history.push("/plots")) :
         this.props
-            .addPlot(plot)
-            .then(() => this.props.history.push("/plots/search"))
+        .addPlot(plot)
+        .then(() => this.props.history.push("/plots/search"))}
     }
 
     render() {
