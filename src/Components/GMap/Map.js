@@ -7,8 +7,8 @@ const style = {
 //   border: 'solid 5px black',
   margin: 'auto',
   marginTop: '0px',
-  width: '20%',
-  height: '20%'
+  width: '50%',
+  height: '50%'
 }
 class Container extends Component {
   state = {
@@ -33,7 +33,7 @@ class Container extends Component {
   }
   render() {
     return (
-      <Map google={this.props.google} style={style} zoom={10} initialCenter={{ lat: 36.1627, lng: 86.7816 }}
+      <Map google={this.props.google} style={style} zoom={12} initialCenter={{ lat: 36.1627, lng: -86.7816 }}
         onClick={this.onMapClick}>
         <Marker
           onClick={this.onMarkerClick}
@@ -55,5 +55,5 @@ class Container extends Component {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: ("AIzaSyCV2mEUyiNl7iQM_bGtDmZqM8CgHx7anmE")
+  apiKey: ("AIzaSyAFA4NCDHskJYxUCSE2wLRbe4xkCOxnx4Y")
 })(Container)
