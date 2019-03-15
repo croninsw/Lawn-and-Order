@@ -14,6 +14,7 @@ import ToolForm from "./Resources/ToolForm"
 import PlotSearch from "./Plots/PlotSearch"
 import PlotDetail from "./Plots/PlotDetail"
 import Home from "./Home/Home"
+import ToolListManager from "../Modules/ToolListManager";
 
 export default class ApplicationViews extends Component {
 
@@ -21,7 +22,8 @@ export default class ApplicationViews extends Component {
         users: [],
         plots: [],
         bookings: [],
-        tools: []
+        tools: [],
+        plotTools: []
     }
 
     addPlot = newPlot => {
@@ -58,6 +60,11 @@ export default class ApplicationViews extends Component {
             .then(tools => this.setState({ tools: tools }))
     }
 
+    addPlotTool = (tool) => {
+        return ToolListManager.post(tool)
+            .then(plotTools => this.setState({ plotTools: plotTools }))
+    }
+
     isAuthorized = () => sessionStorage.getItem("credentials") !== null
 
     componentDidMount() {
@@ -68,6 +75,8 @@ export default class ApplicationViews extends Component {
         BookingManager.getAll().then(bookings => this.setState({ bookings: bookings }))
 
         ToolManager.getAll().then(tools => this.setState({ tools: tools }))
+
+        ToolListManager.getAll().then(plotTools => this.setState({ plotTools: plotTools}))
     }
 
     render() {
@@ -97,7 +106,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/plots/detail/:plotId(\d+)" render={(props) => {
-                    return <PlotDetail plots={this.state.plots} tools={this.state.tools} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} addTool={this.addTool}/>
+                    return <PlotDetail plots={this.state.plots} tools={this.state.tools} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} addTool={this.addTool} addPlotTool={this.addPlotTool}/>
                 }}
                 />
                 <Route exact path="/profile" render={(props) => {

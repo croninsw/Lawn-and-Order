@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import ToolListManager from "../../Modules/ToolListManager"
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Label, FormGroup
@@ -20,9 +21,27 @@ export default class PlotDetail extends Component {
         .then(() => this.props.history.push("/plots"))
     }
 
+    newTool = (tool, plot) => {
+        const specificTool = {
+            plotId: plot,
+            toolId: tool
+        }
+
+        this.props.addPlotTool(specificTool)
+        .then(ToolListManager.getAll())
+    }
+
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+      }
+
+
     render() {
         const role = sessionStorage.getItem("role")
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
+        const tool = this.props.tools
         const plot = this.props.plots.find(plot => plot.id === parseInt(this.props.match.params.plotId)) || {}
     return (
         <React.Fragment>
@@ -51,20 +70,22 @@ export default class PlotDetail extends Component {
 
                         {activeUser === plot.gardenerId || activeUser === plot.userId ?          <FormGroup>
                                     <Label for="tools">Add New Tool to Plot</Label>
-                                    <select onchange={this.handleFieldChange}
+                                    <select onChange={this.handleFieldChange}
                                         type="tools"
                                         id="tools"
                                         placeholder={"Tools"}
-                                        required="">
+                                        required=""
+                                        >
                                         {
                                             this.props.tools.map(tool =>
-                                                <option id={tool.id}>{tool.name}</option>
+                                                <option key={tool.id}>{tool.name}</option>
                                             )
                                         }
                                     </select>
+                                    <Button onClick={() => this.newTool(tool.id, plot.id)}>Add Tool</Button>
                             </FormGroup> : null}
 
-
+                            <CardText>{}</CardText>
 
 
 
