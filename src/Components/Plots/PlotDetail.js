@@ -74,7 +74,7 @@ export default class PlotDetail extends Component {
                                 <Button onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete</Button> :
                                 null}
 
-                            {role === "Gardener" && plot.gardenerId === null ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
+                            {role === "Gardener"  ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
 
 
 
@@ -101,7 +101,7 @@ export default class PlotDetail extends Component {
                             <section className="plotTools">
 
                                 {
-                                    this.props.plotTools.map(plotTool =>
+                                    this.props.plotTools.filter(plotTool => plotTool.plotId === plot.id).map(plotTool =>
                                         <PlotToolCard deletePlotTool={this.props.deletePlotTool} key={plotTool.id} value={plotTool.id} tools={this.props.tools} plotTool={plotTool} {...this.props} />
                                     )
                                 }

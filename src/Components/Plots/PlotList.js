@@ -27,6 +27,14 @@ export default class PlotList extends Component {
                     <h2 className="title__text">
                         My Yards
                 </h2>
+
+                <section className="myYards">
+                    {
+                        this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
+                        <PlotCard key={plot.id} plot={plot} {...this.props} />
+                            )
+                    }
+                </section>
                     <h5>
                         Add a new yard, yard maintenance, and general stuff
                 </h5>
