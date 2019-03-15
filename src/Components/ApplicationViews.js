@@ -62,9 +62,15 @@ export default class ApplicationViews extends Component {
 
     addPlotTool = (tool) => {
         return ToolListManager.post(tool)
+            .then(() => ToolListManager.getAll())
             .then(plotTools => this.setState({ plotTools: plotTools }))
     }
 
+    deletePlotTool = id => {
+        return ToolListManager.deleteAndList(id)
+            .then(() => ToolListManager.getAll())
+            .then(plotTools => this.setState({ plotTools: plotTools}))
+    }
     isAuthorized = () => sessionStorage.getItem("credentials") !== null
 
     componentDidMount() {
@@ -106,7 +112,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/plots/detail/:plotId(\d+)" render={(props) => {
-                    return <PlotDetail plots={this.state.plots} tools={this.state.tools} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} addTool={this.addTool} addPlotTool={this.addPlotTool}/>
+                    return <PlotDetail plots={this.state.plots} tools={this.state.tools} plotTools={this.state.plotTools} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} addTool={this.addTool} deletePlotTool={this.deletePlotTool} addPlotTool={this.addPlotTool}/>
                 }}
                 />
                 <Route exact path="/profile" render={(props) => {

@@ -1,18 +1,20 @@
 import React, { Component } from "react"
 
-export default class ResourceCard extends Component {
+export default class PlotToolCard extends Component {
     render() {
-        const tool = this.props.tool
+        const plotTool = this.props.plotTool
+        const tool = this.props.tools
         return (
             <section className="tool">
                 {
-                        <div key={tool.id} className="">
+                        <div key={plotTool.id} className="">
                             <div className="">
-                                <h5 className="">{tool.name}</h5>
-                                    <img src={tool.img} className="tool_img" />
+                                <h5 className="">{
+                                    tool.find(tool => tool.id === plotTool.toolId).name
+                                }</h5>
                                     <button type="button"
                                         className=""
-                                        onClick={() => this.props.deleteTool(tool.id)}
+                                        onClick={() => this.props.deletePlotTool(plotTool.id)}
                                         className="">Remove</button>
                             </div>
                         </div>
@@ -21,4 +23,3 @@ export default class ResourceCard extends Component {
         )
     }
 }
-
