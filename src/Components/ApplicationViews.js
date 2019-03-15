@@ -81,7 +81,7 @@ export default class ApplicationViews extends Component {
                 />
 
                 <Route exact path="/plots" render={(props) => {
-                    return <PlotList plots={this.state.plots} users={this.state.users} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} />
+                    return <PlotList plots={this.state.plots} tools={this.state.tools} users={this.state.users} {...props} addPlot={this.addPlot} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} />
                 }}
                 />
                 <Route exact path="/plots/search" render={(props) => {

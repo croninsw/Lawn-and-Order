@@ -1,9 +1,22 @@
 import React, { Component } from "react"
 import PlotCard from "./PlotCard"
-import { Button } from "reactstrap"
+import {
+
+    FormGroup, Label,
+    Button,
+  } from "reactstrap"
 import "./Plot.css"
 
 export default class PlotList extends Component {
+
+
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+      }
+
+
     render() {
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         const role = sessionStorage.getItem("role")
@@ -11,28 +24,27 @@ export default class PlotList extends Component {
         return (
             <React.Fragment>
                 <div className="body">
-                <h2 className="title__text">
-                    My Yards
+                    <h2 className="title__text">
+                        My Yards
                 </h2>
-                <h5>
-                    Add a new yard, yard maintenance, and general stuff
+                    <h5>
+                        Add a new yard, yard maintenance, and general stuff
                 </h5>
 
-                <div className="">
-                    {role === "Homeowner" ?
-                        <Button type="button"
-                            onClick={() => this.props.history.push("/plots/new")}
-                            className="newPlotButton">
-                            Publish New Plot
-                        </Button>
-                        : null}
-                </div>
-                <div className="">
+                    <div className="">
+                        {role === "Homeowner" ?
+                            <React.Fragment>
+                                <FormGroup>
+                                    <Button type="button"
+                                        onClick={() => this.props.history.push("/plots/new")}
+                                        className="newPlotButton">
+                                        Publish New Plot
+                            </Button>
+                                </FormGroup>
+                            </React.Fragment>
+                            : null}
+                    </div>
 
-                    {activeUser === this.props.plots.userId ?
-                        this.props.plots.find(plot => plot.userId === activeUser)
-                        : null}
-                </div>
                 <div>
                     <section className="plots">
                         {
@@ -43,7 +55,7 @@ export default class PlotList extends Component {
                     </section>
                 </div>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }
