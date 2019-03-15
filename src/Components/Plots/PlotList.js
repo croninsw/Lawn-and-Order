@@ -27,6 +27,12 @@ export default class PlotList extends Component {
                         </Button>
                         : null}
                 </div>
+                <div className="">
+
+                    {activeUser === this.props.plots.userId ?
+                        this.props.plots.find(plot => plot.userId === activeUser)
+                        : null}
+                </div>
                 <div>
                     <section className="plots">
                         {
