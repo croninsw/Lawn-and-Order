@@ -34,6 +34,17 @@ export default class PlotDetail extends Component {
             .then(() => ToolListManager.getAll())
     }
 
+    removeYard = (id) => {
+
+        const removeClaim = {
+            id: id,
+            gardenerId: null
+        }
+
+        this.props.patchPlot(removeClaim)
+            .then(() => this.props.history.push("/plots"))
+    }
+
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
@@ -45,7 +56,8 @@ export default class PlotDetail extends Component {
         const role = sessionStorage.getItem("role")
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         const plot = this.props.plots.find(plot => plot.id === parseInt(this.props.match.params.plotId)) || {}
-        const plotOwner = this.props.users.find(user => user.id === this.props.plots.userId) || {}
+        const plotOwner = this.props.users.find(user => user.id === plot.userId) || {}
+        const plotGardener = this.props.users.find(user => user.id === plot.gardenerId) || {}
         const tool = this.props.tools
         return (
             <React.Fragment>
@@ -55,6 +67,7 @@ export default class PlotDetail extends Component {
                         <CardBody>
                             <CardTitle><div>Address: {plot.address}</div></CardTitle>
                             <CardTitle>Owner: {plotOwner.username}</CardTitle>
+                            <CardTitle>Current Gardener: {plotGardener.username}</CardTitle>
                             <CardSubtitle>Total Square Footage: {plot.total_sqFeet} sq. ft.</CardSubtitle>
                             <CardSubtitle>Available Square Feet: {plot.avail_sqFeet} sq. ft.</CardSubtitle>
                             <CardText>Notes: {plot.notes}</CardText>
@@ -82,15 +95,16 @@ export default class PlotDetail extends Component {
                                 </React.Fragment> : null}
 
                             {role === "Gardener" && plot.gardenerId === activeUser ?
-                                <Button onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete</Button> :
+                                <Button onClick={() => this.removeYard(plot.id)}>Delete</Button> :
                                 null}
 
-                            {role === "Gardener"  ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
+                            {role === "Gardener" && plot.gardenerId !== activeUser ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
 
 
 
 
-                            {activeUser === plot.gardenerId || activeUser === plot.userId ? <FormGroup>
+                            {activeUser === plot.gardenerId || activeUser === plot.userId ?
+                            <FormGroup>
                                 <Label for="tools">Add New Tool to Plot</Label>
 
                                 <select onChange={this.handleFieldChange}

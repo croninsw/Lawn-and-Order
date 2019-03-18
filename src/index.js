@@ -1,14 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import "./index.css"
-import Lawn_Order from "./Components/Lawn_Order"
+import LawnOrder from "./Components/LawnOrder"
 import * as serviceWorker from "./serviceWorker"
 import { BrowserRouter as Router } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.render(
   <Router>
-    <Lawn_Order />
+    <LawnOrder />
   </Router>,
   document.getElementById("root")
 )

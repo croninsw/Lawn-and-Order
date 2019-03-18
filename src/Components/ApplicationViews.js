@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Route } from "react-router-dom"
 import UserManager from "../Modules/UserManager"
 import PlotManager from "../Modules/PlotManager"
-import BookingManager from "../Modules/BookingManager"
+import FriendManager from "../Modules/FriendManager"
 import ToolManager from "../Modules/ToolManager"
 import Login from "./Login/Login"
 import PlotList from "./Plots/PlotList"
@@ -14,14 +14,15 @@ import ToolForm from "./Resources/ToolForm"
 import PlotSearch from "./Plots/PlotSearch"
 import PlotDetail from "./Plots/PlotDetail"
 import Home from "./Home/Home"
-import ToolListManager from "../Modules/ToolListManager";
+import ToolListManager from "../Modules/ToolListManager"
+import UserEditForm from "./Users/UserEditForm"
 
 export default class ApplicationViews extends Component {
 
     state = {
         users: [],
         plots: [],
-        bookings: [],
+        friends: [],
         tools: [],
         plotTools: []
     }
@@ -69,8 +70,21 @@ export default class ApplicationViews extends Component {
     deletePlotTool = id => {
         return ToolListManager.deleteAndList(id)
             .then(() => ToolListManager.getAll())
-            .then(plotTools => this.setState({ plotTools: plotTools}))
+            .then(plotTools => this.setState({ plotTools: plotTools }))
     }
+
+    addUserAsFriend = user => {
+        return FriendManager.post(user)
+            .then(() => FriendManager.getAll())
+            .then(friends => this.setState({ friends: friends }))
+    }
+
+    patchUser = patchedUser => {
+        return UserManager.patch(patchedUser)
+            .then(() => UserManager.getAll())
+            .then(users => this.setState({ users: users }))
+    }
+
     isAuthorized = () => sessionStorage.getItem("credentials") !== null
 
     componentDidMount() {
@@ -78,7 +92,7 @@ export default class ApplicationViews extends Component {
 
         PlotManager.getSorted().then(plots => this.setState({ plots: plots }))
 
-        BookingManager.getAll().then(bookings => this.setState({ bookings: bookings }))
+        FriendManager.getAll().then(friends => this.setState({ friends: friends }))
 
         ToolManager.getAll().then(tools => this.setState({ tools: tools }))
 
@@ -118,6 +132,12 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/profile" render={(props) => {
                     return <UserList users={this.state.users} {...props} />
                 }}
+
+                />
+                <Route exact path="/profile/edit" render={(props) => {
+                    return <UserEditForm users={this.state.users} {...props} patchUser={this.patchUser}/>
+                }}
+
                 />
                 <Route exact path="/resources" render={(props) => {
                     return <ResourceList tools={this.state.tools} {...props} deleteTool={this.deleteTool} />

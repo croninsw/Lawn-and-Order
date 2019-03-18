@@ -99,19 +99,19 @@ export default class PlotEditForm extends Component {
                     <legend>Edit Yard Details</legend>
                     <FormGroup>
                         <Label for="address">Address</Label>
-                        <Input type="address" name="address" id="address" placeholder="" value={this.state.address} onChange={this.handleFieldChange} />
+                        <Input type="textarea" name="address" id="address" placeholder="" value={this.state.address} onChange={this.handleFieldChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="total_sqFeet">Total Footage</Label>
-                        <Input type="total_sqFeet" name="total_sqFeet" id="total_sqFeet" placeholder="" value={this.state.total_sqFeet} onChange={this.handleFieldChange} />
+                        <Input type="textarea" name="total_sqFeet" id="total_sqFeet" placeholder="" value={this.state.total_sqFeet} onChange={this.handleFieldChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="avail_sqFeet">Available Footage</Label>
-                        <Input type="avail_sqFeet" name="avail_sqFeet" id="avail_sqFeet" placeholder="" value={this.state.avail_sqFeet} onChange={this.handleFieldChange} />
+                        <Input type="textarea" name="avail_sqFeet" id="avail_sqFeet" placeholder="" value={this.state.avail_sqFeet} onChange={this.handleFieldChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="notes">Yard Notes</Label>
-                        <Input type="textarea" name="notes" id="notes" />
+                        <Input type="textarea" name="notes" id="notes" placeholder="" value={this.state.notes} onChange={this.handleFieldChange}  />
                     </FormGroup>
                     <FormGroup>
                         <Label for="image">File</Label>
@@ -159,6 +159,6 @@ export default class PlotEditForm extends Component {
                     <Button onClick={this.updateExistingPlot}>Submit Edit</Button>
                 </Form>
             </React.Fragment>
-        );
+        )
     }
 }

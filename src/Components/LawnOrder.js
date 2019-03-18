@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import IsAuthorized from "./Login/isAuthorized";
 
-export default class Lawn_Order extends Component {
+export default class LawnOrder extends Component {
     // a function that return true if the session Storage object contains the key credentials and false if it does not.
     isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
