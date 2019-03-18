@@ -11,7 +11,11 @@ export default class PlotEditForm extends Component {
         total_sqFeet: "",
         avail_sqFeet: "",
         notes: "",
-        image: ""
+        image: "",
+        anyAll: "",
+        fruit: "",
+        vegetables: "",
+        flowers: ""
     }
 
     // Update state whenever an input field is edited
@@ -21,17 +25,46 @@ export default class PlotEditForm extends Component {
         this.setState(stateToChange)
     }
 
+    toggleChangeAnyAll = () => {
+        this.setState(prevState => ({
+          anyAll: !prevState.anyAll,
+        }))
+      }
+
+    toggleChangeFruit = () => {
+        this.setState(prevState => ({
+          fruit: !prevState.fruit,
+        }))
+      }
+
+    toggleChangeVegetables = () => {
+        this.setState(prevState => ({
+          vegetables: !prevState.vegetables,
+        }))
+      }
+
+    toggleChangeFlowers = () => {
+        this.setState(prevState => ({
+          flowers: !prevState.flowers,
+        }))
+      }
+
     updateExistingPlot = evt => {
         evt.preventDefault();
 
         const editedPlot = {
             id: this.props.match.params.plotId,
             userId: parseInt(sessionStorage.getItem("credentials")),
+            gardenerId: this.state.gardenerId,
             address: this.state.address,
             total_sqFeet: this.state.total_sqFeet,
             avail_sqFeet: this.state.avail_sqFeet,
             notes: this.state.notes,
-            image: this.state.image
+            image: this.state.image,
+            anyAll: this.state.anyAll,
+            fruit: this.state.fruit,
+            vegetables: this.state.vegetables,
+            flowers: this.state.flowers
         }
 
         // Create the plot and redirect user to plot list
@@ -42,77 +75,89 @@ export default class PlotEditForm extends Component {
 
     componentDidMount() {
         PlotManager.getOne(this.props.match.params.plotId)
-        .then(plot => {
-            this.setState({
-            userId: plot.userId,
-            address: plot.address,
-            total_sqFeet: plot.total_sqFeet,
-            avail_sqFeet: plot.avail_sqFeet,
-            notes: plot.notes,
-            image: plot.image
+            .then(plot => {
+                this.setState({
+                    userId: plot.userId,
+                    gardenerId: plot.gardenerId,
+                    address: plot.address,
+                    total_sqFeet: plot.total_sqFeet,
+                    avail_sqFeet: plot.avail_sqFeet,
+                    notes: plot.notes,
+                    image: plot.image,
+                    anyAll: plot.anyAll,
+                    fruit: plot.fruit,
+                    vegetables: plot.vegetables,
+                    flowers: plot.flowers
+                })
             })
-        })
-        }
+    }
 
     render() {
         return (
             <React.Fragment>
-            <Form>
-                <legend>Edit Yard Details</legend>
-                <FormGroup>
-                    <Label for="address">Address</Label>
-                    <Input type="address" name="address" id="address" placeholder="" value={this.state.address} onChange={this.handleFieldChange} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="total_sqFeet">Total Footage</Label>
-                    <Input type="total_sqFeet" name="total_sqFeet" id="total_sqFeet" placeholder="" value={this.state.total_sqFeet} onChange={this.handleFieldChange} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="avail_sqFeet">Available Footage</Label>
-                    <Input type="avail_sqFeet" name="avail_sqFeet" id="avail_sqFeet" placeholder="" value={this.state.avail_sqFeet} onChange={this.handleFieldChange} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="notes">Yard Notes</Label>
-                    <Input type="textarea" name="notes" id="notes" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="image">File</Label>
-                    <Input type="file" name="image" id="image" />
-                    <FormText color="muted">
-                        Upload photos of the plot and property to highlight amenities and layout.
+                <Form>
+                    <legend>Edit Yard Details</legend>
+                    <FormGroup>
+                        <Label for="address">Address</Label>
+                        <Input type="address" name="address" id="address" placeholder="" value={this.state.address} onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="total_sqFeet">Total Footage</Label>
+                        <Input type="total_sqFeet" name="total_sqFeet" id="total_sqFeet" placeholder="" value={this.state.total_sqFeet} onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="avail_sqFeet">Available Footage</Label>
+                        <Input type="avail_sqFeet" name="avail_sqFeet" id="avail_sqFeet" placeholder="" value={this.state.avail_sqFeet} onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="notes">Yard Notes</Label>
+                        <Input type="textarea" name="notes" id="notes" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="image">File</Label>
+                        <Input type="file" name="image" id="image" />
+                        <FormText color="muted">
+                            Upload photos of the plot and property to highlight amenities and layout.
 </FormText>
 
-                </FormGroup>
-                {/* <FormGroup tag="fieldset">
+                    </FormGroup>
                     <legend>Preferred Garden Bounty</legend>
-                </FormGroup>
-                <FormGroup check>
-                    <Label check>
-                        <Input type="checkbox" />{' '}
-                        Any / All
-                    </Label>
-                </FormGroup>
-                <FormGroup check>
-                    <Label check>
-                        <Input type="checkbox" />{' '}
-                        Fruit
-                    </Label>
-                </FormGroup>
-                <FormGroup check>
-                    <Label check>
-                        <Input type="checkbox" />{' '}
-                        Vegetables
-                    </Label>
-                </FormGroup>
-                <FormGroup check>
-                    <Label check>
-                        <Input type="checkbox" />{' '}
-                        Flowers
-                    </Label>
-                </FormGroup> */}
-                <Button onClick={this.updateExistingPlot}>Submit Edit</Button>
-            </Form>
-        </React.Fragment>
+
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" name="bountyType" value={this.state.anyAll}
+                                // checked={this.state.anyAll}
+                                onChange={this.toggleChangeAnyAll} />
+                            Any / All
+    </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" name="bountyType" value={this.state.fruit}
+                                // checked={this.state.fruit}
+                                onChange={this.toggleChangeFruit} />
+                            Fruit
+    </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" name="bountyType" value={this.state.vegetables}
+                                // checked={this.state.vegetables}
+                                onChange={this.toggleChangeVegetables} />
+                            Vegetables
+    </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" name="bountyType" value={this.state.flowers}
+                                // checked={this.state.flowers}
+                                onChange={this.toggleChangeFlowers} />
+                            Flowers
+    </Label>
+                    </FormGroup>
+                    <Button onClick={this.updateExistingPlot}>Submit Edit</Button>
+                </Form>
+            </React.Fragment>
         );
     }
 }

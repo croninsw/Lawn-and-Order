@@ -104,7 +104,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/plots/new" render={(props) => {
-                    return <PlotForm {...props} addPlot={this.addPlot} />
+                    return <PlotForm {...props} addPlot={this.addPlot} patchPlot={this.patchPlot}/>
                 }}
                 />
                 <Route exact path="/plots/:plotId(\d+)/edit" render={(props) => {

@@ -56,6 +56,15 @@ export default class PlotDetail extends Component {
                             <CardSubtitle>Total Square Footage: {plot.total_sqFeet} sq. ft.</CardSubtitle>
                             <CardSubtitle>Available Square Feet: {plot.avail_sqFeet} sq. ft.</CardSubtitle>
                             <CardText>Notes: {plot.notes}</CardText>
+                            <CardSubtitle>
+                            Preferred Crop:
+                             <ul>
+                            <li>{plot.anyAll === true ?  "Any or All" : null}</li>
+                            <li>{plot.fruit === true ?  "Fruit" : null}</li>
+                            <li>{plot.vegetables === true ?  "Vegetables" : null}</li>
+                            <li>{plot.flowers === true ?  "Flowers" : null}</li>
+                            </ul>
+                            </CardSubtitle>
 
                             <hr />
 
