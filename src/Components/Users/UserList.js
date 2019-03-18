@@ -8,13 +8,17 @@ export default class UserList extends Component {
         return (
             <React.Fragment>
 
-                <Button onClick={() => this.props.history.push("/profile/edit")}>Update Profile Information</Button>
+
                 <section className="users">
                 {
-                    this.props.users.filter(users => users.id === activeUser).map(user =>
+                    this.props.users.map(user =>
                         <UserCard key={user.id} user={user} {...this.props} />
+
                     )
+
+
                 }
+
                 </section>
             </React.Fragment>
         )

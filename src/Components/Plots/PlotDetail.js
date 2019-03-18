@@ -89,8 +89,6 @@ export default class PlotDetail extends Component {
 
                                     <Button onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete</Button>
 
-                                    <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button>
-
                                     <hr />
                                 </React.Fragment> : null}
 
