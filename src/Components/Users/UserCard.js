@@ -1,30 +1,32 @@
 import React, { Component } from "react"
+import { Button } from "reactstrap"
 
 export default class UserCard extends Component {
+
+    addUserAsFriend = user => {
+
+    }
+
     render() {
         const user = this.props.user
+        const activeUser = parseInt(sessionStorage.getItem("credentials"))
         return (
             <section className="user">
                 {
                         <div key={user.id} className="">
                             <div className="">
-                                <h5 className="">{user.first_name}</h5>
-                                <div>{user.last_name}</div>
+                                <h5 className="">{user.firstName} {user.lastName}</h5>
+                                <div>-{user.role}-</div>
                                 <div>{user.email}</div>
-                                <div>{user.role}</div>
-                                    <img src={user.img} className="user_img" />
 
-                                    <button type="button"
+                                <img src={user.img} className="user_img" />
+                                {activeUser === user.id ? null : <Button type="button"
                                         className=""
                                         onClick={() => this.props.addUserAsFriend(user.id)}
-                                        className="">Add Friend</button>
-                                    <button type="button"
-                                        className=""
-                                        onClick={() => {
-                                            this.props.history.push(`/plots/${this.props.plot.id}`)
-                                        }}
-                                    >Edit</button>
+                                        className="">Add Friend</Button>}
+
                             </div>
+                            <section>{user.info}</section>
                         </div>
                 }
             </section>

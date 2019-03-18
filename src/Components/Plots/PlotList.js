@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import PlotCard from "./PlotCard"
 import {
 
-    FormGroup, Label,
+    FormGroup,
     Button,
   } from "reactstrap"
 import "./Plot.css"
