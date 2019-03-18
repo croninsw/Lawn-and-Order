@@ -11,12 +11,36 @@ export default class PlotForm extends Component {
         avail_sqFeet: [],
         notes: [],
         image: [],
-        any_all: false,
+        anyAll: false,
         fruit: false,
         vegetables: false,
         flowers: false
     }
 
+
+    toggleChangeAnyAll = () => {
+        this.setState(prevState => ({
+          anyAll: !prevState.anyAll,
+        }));
+      }
+
+    toggleChangeFruit = () => {
+        this.setState(prevState => ({
+          fruit: !prevState.fruit,
+        }));
+      }
+
+    toggleChangeVegetables = () => {
+        this.setState(prevState => ({
+          vegetables: !prevState.vegetables,
+        }));
+      }
+
+    toggleChangeFlowers = () => {
+        this.setState(prevState => ({
+          flowers: !prevState.flowers,
+        }));
+      }
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
@@ -41,10 +65,10 @@ export default class PlotForm extends Component {
             avail_sqFeet: this.state.avail_sqFeet,
             notes: this.state.notes,
             image: this.state.image,
-            any_all: false,
-            fruit: false,
-            vegetables: false,
-            flowers: false
+            anyAll: this.state.anyAll,
+            fruit: this.state.fruit,
+            vegetables: this.state.vegetables,
+            flowers: this.state.flowers
         }
 
         {role === "Homeowner" ? this.props.addPlot(plot).then(() => this.props.history.push("/plots")) :
@@ -82,38 +106,44 @@ export default class PlotForm extends Component {
 </FormText>
 
                     </FormGroup>
+
                     <FormGroup tag="fieldset">
                         <legend>Preferred Garden Bounty</legend>
+
                     </FormGroup>
-                    {/* <FormGroup check>
+                    <FormGroup check>
                         <Label check>
-                            <Input type="checkbox"  name="bountyType"
-                            onClick={() => this.handleInputChange}/>{' '}
+                            <Input type="checkbox"  name="bountyType" value="anyAll"
+                            checked={this.state.anyAll}
+                            onChange={this.toggleChangeAnyAll} />
                             Any / All
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox"  name="bountyType"
-                            onClick={() => this.handleInputChange}/>{' '}
+                            <Input type="checkbox"  name="bountyType" value="fruit"
+                            checked={this.state.fruit}
+                            onChange={this.toggleChangeFruit} />
                             Fruit
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox"  name="bountyType"
-                            onClick={() => this.handleInputChange}/>{' '}
+                            <Input type="checkbox"  name="bountyType" value="vegetables"
+                            checked={this.state.vegetables}
+                            onChange={this.toggleChangeVegetables} />
                             Vegetables
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox"
-                            name="bountyType"
-                            onClick={() => this.handleInputChange}/>{' '}
+                            <Input type="checkbox" name="bountyType" value="flowers"
+                            checked={this.state.flowers}
+                            onChange={this.toggleChangeFlowers} />
                             Flowers
                         </Label>
-                    </FormGroup> */}
+                    </FormGroup>
+
                     <Button onClick={this.constructNewPlot}>Submit</Button>
                 </Form>
             </React.Fragment>
