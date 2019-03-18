@@ -44,8 +44,9 @@ export default class PlotDetail extends Component {
     render() {
         const role = sessionStorage.getItem("role")
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
-        const tool = this.props.tools
         const plot = this.props.plots.find(plot => plot.id === parseInt(this.props.match.params.plotId)) || {}
+        const plotOwner = this.props.users.find(user => user.id === this.props.plots.userId) || {}
+        const tool = this.props.tools
         return (
             <React.Fragment>
                 <div>
@@ -53,6 +54,7 @@ export default class PlotDetail extends Component {
                         {/* <CardImg top width="100%" src={} alt="Plot image" /> */}
                         <CardBody>
                             <CardTitle><div>Address: {plot.address}</div></CardTitle>
+                            <CardTitle>Owner: {plotOwner.username}</CardTitle>
                             <CardSubtitle>Total Square Footage: {plot.total_sqFeet} sq. ft.</CardSubtitle>
                             <CardSubtitle>Available Square Feet: {plot.avail_sqFeet} sq. ft.</CardSubtitle>
                             <CardText>Notes: {plot.notes}</CardText>

@@ -125,32 +125,33 @@ export default class PlotEditForm extends Component {
 
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" name="bountyType" value={this.state.anyAll}
-                                // checked={this.state.anyAll}
+                            <Input type="checkbox" name="bountyType"
+                            id="anyAll"
+                                checked={this.state.anyAll}
                                 onChange={this.toggleChangeAnyAll} />
                             Any / All
     </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" name="bountyType" value={this.state.fruit}
-                                // checked={this.state.fruit}
+                            <Input type="checkbox" name="bountyType"
+                                checked={this.state.fruit}
                                 onChange={this.toggleChangeFruit} />
                             Fruit
     </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" name="bountyType" value={this.state.vegetables}
-                                // checked={this.state.vegetables}
+                            <Input type="checkbox" name="bountyType"
+                                checked={this.state.vegetables}
                                 onChange={this.toggleChangeVegetables} />
                             Vegetables
     </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type="checkbox" name="bountyType" value={this.state.flowers}
-                                // checked={this.state.flowers}
+                            <Input type="checkbox" name="bountyType"
+                                checked={this.state.flowers}
                                 onChange={this.toggleChangeFlowers} />
                             Flowers
     </Label>
