@@ -14,7 +14,8 @@ export default class PlotForm extends Component {
         anyAll: false,
         fruit: false,
         vegetables: false,
-        flowers: false
+        flowers: false,
+        herbs: false
     }
 
 
@@ -39,6 +40,11 @@ export default class PlotForm extends Component {
     toggleChangeFlowers = () => {
         this.setState(prevState => ({
           flowers: !prevState.flowers,
+        }));
+      }
+    toggleChangeHerbs = () => {
+        this.setState(prevState => ({
+          herbs: !prevState.herbs,
         }));
       }
     // Update state whenever an input field is edited
@@ -68,7 +74,8 @@ export default class PlotForm extends Component {
             anyAll: this.state.anyAll,
             fruit: this.state.fruit,
             vegetables: this.state.vegetables,
-            flowers: this.state.flowers
+            flowers: this.state.flowers,
+            herbs: this.state.herbs
         }
 
         {role === "Homeowner" ? this.props.addPlot(plot).then(() => this.props.history.push("/plots")) :
@@ -141,6 +148,14 @@ export default class PlotForm extends Component {
                             checked={this.state.flowers}
                             onChange={this.toggleChangeFlowers} />
                             Flowers
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" name="bountyType" value="herbs"
+                            checked={this.state.herbs}
+                            onChange={this.toggleChangeHerbs} />
+                            Herbs
                         </Label>
                     </FormGroup>
 

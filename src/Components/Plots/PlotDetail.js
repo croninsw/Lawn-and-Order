@@ -78,6 +78,7 @@ export default class PlotDetail extends Component {
                             <li>{plot.fruit === true ?  "Fruit" : null}</li>
                             <li>{plot.vegetables === true ?  "Vegetables" : null}</li>
                             <li>{plot.flowers === true ?  "Flowers" : null}</li>
+                            <li>{plot.herbs === true ?  "Herbs" : null}</li>
                             </ul>
                             </CardSubtitle>
 
