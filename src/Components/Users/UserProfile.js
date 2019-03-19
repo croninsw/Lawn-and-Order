@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Button } from "reactstrap"
+import Chat from "../Chat/Chat";
 
 export default class UserCard extends Component {
 
@@ -16,8 +17,10 @@ export default class UserCard extends Component {
                                 <div>-{user.role}-</div>
                                 <div>{user.email}</div>
 
-
                                 <section>{user.info}</section>
+
+                                {activeUser === user.id ? null : <Button onClick={() => this.props.history.push(`/users/${user.id}/chat`)}>Message</Button>}
+
                             </div>
 
                         </div>

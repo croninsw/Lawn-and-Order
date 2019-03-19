@@ -17,6 +17,8 @@ import Home from "./Home/Home"
 import ToolListManager from "../Modules/ToolListManager"
 import UserEditForm from "./Users/UserEditForm"
 import UserProfile from "./Users/UserProfile"
+import ChatManager from "../Modules/ChatManager";
+import Chat from "./Chat/Chat";
 
 export default class ApplicationViews extends Component {
 
@@ -25,7 +27,8 @@ export default class ApplicationViews extends Component {
         plots: [],
         friends: [],
         tools: [],
-        plotTools: []
+        plotTools: [],
+        messages: []
     }
 
     addPlot = newPlot => {
@@ -74,17 +77,19 @@ export default class ApplicationViews extends Component {
             .then(plotTools => this.setState({ plotTools: plotTools }))
     }
 
-    addUserAsFriend = user => {
-        return FriendManager.post(user)
-            .then(() => FriendManager.getAll())
-            .then(friends => this.setState({ friends: friends }))
-    }
-
     patchUser = patchedUser => {
         return UserManager.patch(patchedUser)
             .then(() => UserManager.getAll())
             .then(users => this.setState({ users: users }))
     }
+
+    addMessage = newMessage => {
+        return ChatManager.post(newMessage)
+            .then(() => ChatManager.getAll())
+            .then(messages => this.setState({ messages: messages}))
+    }
+
+
 
     isAuthorized = () => sessionStorage.getItem("credentials") !== null
 
@@ -98,6 +103,8 @@ export default class ApplicationViews extends Component {
         ToolManager.getAll().then(tools => this.setState({ tools: tools }))
 
         ToolListManager.getAll().then(plotTools => this.setState({ plotTools: plotTools}))
+
+        ChatManager.getAll().then(messages => this.setState({ messages: messages }))
     }
 
     render() {
@@ -152,6 +159,10 @@ export default class ApplicationViews extends Component {
                 />
                 <Route exact path="/tools/new" render={(props) => {
                     return <ToolForm {...props} addTool={this.addTool} />
+                }}
+                />
+                <Route exact path="/users/:usersId(\d+)/chat" render={(props) => {
+                    return <Chat messages={this.state.messages} users={this.state.users} addMessage={this.addMessage} {...props} />
                 }}
                 />
             </React.Fragment>
