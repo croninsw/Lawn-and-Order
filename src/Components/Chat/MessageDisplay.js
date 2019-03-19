@@ -3,15 +3,15 @@ import React, { Component } from "react"
 export default class MessageDisplay extends Component {
 
     render() {
-        const activeUser = parseInt(sessionStorage.getItem("credentials"))
-        const receiverUSer = this.props.match.params.usersId
+        const loggedInUser = parseInt(sessionStorage.getItem("credentials"))
+        const userReceivingMessage = parseInt(this.props.match.params.usersId)
 
-        if()
+
 
         return (
 
             <ul className="messages">
-                {this.props.messages.map(message => {
+                {this.props.messages.filter(message => (loggedInUser === message.receiverId && message.userId === userReceivingMessage) || (message.userId === loggedInUser && message.receiverId === userReceivingMessage)).map(message => {
                     const messageSender = this.props.users.find(user => user.id === message.userId) || {}
                     return (
                         <li key={message.id}>
@@ -25,3 +25,5 @@ export default class MessageDisplay extends Component {
         )
     }
 }
+
+

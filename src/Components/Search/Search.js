@@ -1,23 +1,26 @@
 import React, { Component } from "react"
 
 export default class Search extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            SearchInput: '',
-        }
-        this.handleChange = this.handleChange.bind(this)
-        this.keyPress = this.keyPress.bind(this)
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         SearchInput: '',
+    //     }
+    //     this.handleChange = this.handleChange.bind(this)
+    //     this.keyPress = this.keyPress.bind(this)
+    // }
+
+    state = {
+        searchInput: ""
     }
 
     handleChange(event) {
-        this.setState({ SearchInput: event.target.value })
+        this.setState({ searchInput: event.target.value })
     }
 
     keyPress(event) {
-        const SearchResults = {}
+        const searchResults = {}
         if (event.keyCode === 13) {
-            console.log(this.state.SearchInput)
             fetch(`http://localhost:5002/users?name_like=${this.state.SearchInput}`)
                 .then(r => r.json())
                 .then((parsedJson => SearchResults.FilteredUsers = parsedJson))
@@ -31,7 +34,7 @@ export default class Search extends Component {
                 .then(() => {
                     this.props.history.push({
                         pathname: `/search`,
-                        SearchResults
+                        searchResults
                     })
                 })
         }

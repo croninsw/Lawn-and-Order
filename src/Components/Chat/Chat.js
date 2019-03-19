@@ -15,6 +15,7 @@ export default class Chat extends Component {
         ChatManager.getAll()
             .then(message => {
                 this.setState({
+                    receiverId: message.receiverId,
                     userId: message.userId,
                     text: message.text,
                 })
@@ -25,7 +26,7 @@ export default class Chat extends Component {
         return (
             <div className="chatApp">
                 <MessageDisplay users={this.props.users} messages={this.props.messages} {...this.props} />
-                <MessageForm addMessage={this.props.addMessage} />
+                <MessageForm addMessage={this.props.addMessage} {...this.props} />
             </div>
         )
     }

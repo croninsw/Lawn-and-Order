@@ -6,6 +6,7 @@ export default class Chat extends Component {
 
     state = {
         messages: "",
+        receiverId: "",
         userId: "",
         text: ""
     }
@@ -13,8 +14,10 @@ export default class Chat extends Component {
     newMessage = () => {
 
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
+        const receiverId = this.props.match.params.usersId
 
         const newMessage = {
+            receiverId: parseInt(receiverId),
             userId: activeUser,
             text: this.state.text
         }
@@ -33,6 +36,7 @@ export default class Chat extends Component {
         ChatManager.getAll()
             .then(message => {
                 this.setState({
+                    receiverId: message.receiverId,
                     userId: message.userId,
                     text: message.text,
                 })
