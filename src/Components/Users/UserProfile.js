@@ -16,8 +16,9 @@ export default class UserCard extends Component {
                                 <div>-{user.role}-</div>
                                 <div>{user.email}</div>
 
-
                                 <section>{user.info}</section>
+
+                                {activeUser === user.id ? null : <Button onClick={() => this.props.history.push("/users/message")}>Message</Button>}
                             </div>
 
                         </div>
