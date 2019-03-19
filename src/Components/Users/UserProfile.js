@@ -4,7 +4,7 @@ import { Button } from "reactstrap"
 export default class UserCard extends Component {
 
     render() {
-        const user = this.props.user
+        const user = this.props.users.find(user => user.id === parseInt(this.props.match.params.usersId)) || {}
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         return (
             <section className="user">
@@ -12,16 +12,12 @@ export default class UserCard extends Component {
                         <div key={user.id} className="">
                             <div className="">
                                 <h5 className="">{user.firstName} {user.lastName}</h5>
-                                <div>-{user.role}-</div>
-
-
                                 <img src={user.img} className="user_img" />
-                                {activeUser === user.id ?
-                                <Button onClick={() => this.props.history.push("/users/profile/edit")}>Update Profile Info</Button> : <Button type="button"
-                                        className=""
-                                        onClick={() => this.props.history.push(`/users/profile/${user.id}`)}
-                                        className="">View Profile</Button>}
+                                <div>-{user.role}-</div>
+                                <div>{user.email}</div>
 
+
+                                <section>{user.info}</section>
                             </div>
 
                         </div>
@@ -31,4 +27,5 @@ export default class UserCard extends Component {
         )
     }
 }
+
 

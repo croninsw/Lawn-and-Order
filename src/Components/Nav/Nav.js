@@ -50,7 +50,7 @@ export default class NavBar extends Component {
                                 <NavLink href="/plots">My Yards</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/profile">Profile</NavLink>
+                                <NavLink href="/users">Green Thumbs</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/resources">Resources</NavLink>

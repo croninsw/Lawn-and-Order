@@ -16,6 +16,7 @@ import PlotDetail from "./Plots/PlotDetail"
 import Home from "./Home/Home"
 import ToolListManager from "../Modules/ToolListManager"
 import UserEditForm from "./Users/UserEditForm"
+import UserProfile from "./Users/UserProfile"
 
 export default class ApplicationViews extends Component {
 
@@ -129,13 +130,19 @@ export default class ApplicationViews extends Component {
                     return <PlotDetail plots={this.state.plots} tools={this.state.tools} users={this.state.users} plotTools={this.state.plotTools} {...props} deletePlot={this.deletePlot} editPlot={this.editPlot} patchPlot={this.patchPlot} addTool={this.addTool} deletePlotTool={this.deletePlotTool} addPlotTool={this.addPlotTool}/>
                 }}
                 />
-                <Route exact path="/profile" render={(props) => {
+                <Route exact path="/users" render={(props) => {
                     return <UserList users={this.state.users} {...props} />
                 }}
 
                 />
-                <Route exact path="/profile/edit" render={(props) => {
+                <Route exact path="/users/profile/edit" render={(props) => {
                     return <UserEditForm users={this.state.users} {...props} patchUser={this.patchUser}/>
+                }}
+
+                />
+
+                <Route exact path="/users/profile/:usersId(\d+)" render={(props) => {
+                    return <UserProfile users={this.state.users} {...props} />
                 }}
 
                 />

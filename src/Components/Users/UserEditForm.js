@@ -23,7 +23,7 @@ export default class UserEditForm extends Component {
 
     updateExistingUser = (evt) => {
         evt.preventDefault()
-
+        const activeUser = parseInt(sessionStorage.getItem("credentials"))
         const editedUser = {
             id: parseInt(sessionStorage.getItem("credentials")),
             username: this.state.username,
@@ -38,7 +38,7 @@ export default class UserEditForm extends Component {
         // Create the plot and redirect user to plot list
         this.props
             .patchUser(editedUser)
-            .then(() => this.props.history.push("/profile"))
+            .then(() => this.props.history.push(`/users/profile/${activeUser}`))
     }
 
     componentDidMount() {
