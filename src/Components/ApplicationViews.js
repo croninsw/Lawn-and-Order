@@ -141,7 +141,7 @@ export default class ApplicationViews extends Component {
 
                 />
 
-                <Route exact path="/users/profile/:userId(\d+)" render={(props) => {
+                <Route exact path="/users/profile/:usersId(\d+)" render={(props) => {
                     return <UserProfile users={this.state.users} {...props} />
                 }}
 

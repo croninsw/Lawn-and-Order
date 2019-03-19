@@ -38,7 +38,7 @@ export default class UserEditForm extends Component {
         // Create the plot and redirect user to plot list
         this.props
             .patchUser(editedUser)
-            .then(() => this.props.history.push(`/user/profile/${activeUser}`))
+            .then(() => this.props.history.push(`/users/profile/${activeUser}`))
     }
 
     componentDidMount() {

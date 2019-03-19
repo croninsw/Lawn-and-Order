@@ -4,7 +4,7 @@ import { Button } from "reactstrap"
 export default class UserCard extends Component {
 
     render() {
-        const user = this.props.users
+        const user = this.props.users.find(user => user.id === parseInt(this.props.match.params.usersId)) || {}
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         return (
             <section className="user">
@@ -16,8 +16,7 @@ export default class UserCard extends Component {
                                 <div>-{user.role}-</div>
                                 <div>{user.email}</div>
 
-                                {activeUser === user.id ?
-                                <Button onClick={() => this.props.history.push("/users/profile/edit")}>Update Profile Information</Button> : null}
+
                                 <section>{user.info}</section>
                             </div>
 

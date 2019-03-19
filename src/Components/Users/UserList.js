@@ -4,7 +4,7 @@ import { Button } from "reactstrap"
 
 export default class UserList extends Component {
     render () {
-        const activeUser = parseInt(sessionStorage.getItem("credentials"))
+
         return (
             <React.Fragment>
 
