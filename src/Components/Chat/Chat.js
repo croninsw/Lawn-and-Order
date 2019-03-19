@@ -24,7 +24,7 @@ export default class Chat extends Component {
     render() {
         return (
             <div className="chatApp">
-                <MessageDisplay users={this.props.users} messages={this.props.messages} />
+                <MessageDisplay users={this.props.users} messages={this.props.messages} {...this.props} />
                 <MessageForm addMessage={this.props.addMessage} />
             </div>
         )
