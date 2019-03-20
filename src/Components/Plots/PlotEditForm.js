@@ -15,7 +15,8 @@ export default class PlotEditForm extends Component {
         anyAll: "",
         fruit: "",
         vegetables: "",
-        flowers: ""
+        flowers: "",
+        herbs: ""
     }
 
     // Update state whenever an input field is edited
@@ -48,6 +49,11 @@ export default class PlotEditForm extends Component {
           flowers: !prevState.flowers,
         }))
       }
+    toggleChangeHerbs = () => {
+        this.setState(prevState => ({
+          herbs: !prevState.herbs,
+        }))
+      }
 
     updateExistingPlot = evt => {
         evt.preventDefault();
@@ -64,7 +70,8 @@ export default class PlotEditForm extends Component {
             anyAll: this.state.anyAll,
             fruit: this.state.fruit,
             vegetables: this.state.vegetables,
-            flowers: this.state.flowers
+            flowers: this.state.flowers,
+            herbs: this.state.herbs
         }
 
         // Create the plot and redirect user to plot list
@@ -87,7 +94,8 @@ export default class PlotEditForm extends Component {
                     anyAll: plot.anyAll,
                     fruit: plot.fruit,
                     vegetables: plot.vegetables,
-                    flowers: plot.flowers
+                    flowers: plot.flowers,
+                    herbs: plot.herbs
                 })
             })
     }
@@ -154,6 +162,14 @@ export default class PlotEditForm extends Component {
                                 checked={this.state.flowers}
                                 onChange={this.toggleChangeFlowers} />
                             Flowers
+    </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="checkbox" name="bountyType"
+                                checked={this.state.herbs}
+                                onChange={this.toggleChangeHerbs} />
+                            Herbs
     </Label>
                     </FormGroup>
                     <Button onClick={this.updateExistingPlot}>Submit Edit</Button>

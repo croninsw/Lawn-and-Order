@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import PlotCard from "./PlotCard"
-import Search from "../Search/Search";
+import PlotSearchFilter from "./PlotSearchFilter";
 
 export default class PlotSearch extends Component {
     render () {
         return (
             <React.Fragment>
-                <Search />
+
+                <PlotSearchFilter />
 
                 <section className="plots">
                 {
