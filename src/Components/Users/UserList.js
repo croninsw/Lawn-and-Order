@@ -1,25 +1,28 @@
 import React, { Component } from "react"
 import UserCard from "./UserCard"
-import { Button } from "reactstrap"
+import "./User.css"
+
 
 export default class UserList extends Component {
-    render () {
+    render() {
 
         return (
             <React.Fragment>
 
+                <div className="userContainer">
+                    <section className="users">
+                        {
+                            this.props.users.map(user =>
+                                <UserCard key={user.id} user={user} {...this.props} />
 
-                <section className="users">
-                {
-                    this.props.users.map(user =>
-                        <UserCard key={user.id} user={user} {...this.props} />
-
-                    )
+                            )
 
 
-                }
+                        }
 
-                </section>
+                    </section>
+                </div>
+                <footer></footer>
             </React.Fragment>
         )
     }

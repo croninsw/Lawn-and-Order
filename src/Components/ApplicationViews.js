@@ -122,7 +122,7 @@ export default class ApplicationViews extends Component {
                 }}
                 />
                 <Route exact path="/plots/search" render={(props) => {
-                    return <PlotSearch plots={this.state.plots} {...props}  />
+                    return <PlotSearch plots={this.state.plots} users={this.state.users} tools={this.state.tools} {...props}  />
                 }}
                 />
                 <Route exact path="/plots/new" render={(props) => {

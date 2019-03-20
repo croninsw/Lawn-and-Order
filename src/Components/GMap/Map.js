@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper, google } from 'google-maps-react'
 
 const style = {
-  // justifyContent: 'left',
-//   borderRadius: '15px',
-//   border: 'solid 5px black',
-  margin: 'auto',
-  marginTop: '0px',
-  width: '50%',
-  height: '50%'
+  // margin: 'auto',
+  // marginTop: '0px',
+  width: '25%',
+  height: '40%'
+
 }
 class Container extends Component {
   state = {
@@ -35,13 +33,7 @@ class Container extends Component {
     return (
       <Map google={this.props.google} style={style} zoom={12} initialCenter={{ lat: 36.1627, lng: -86.7816 }}
         onClick={this.onMapClick}>
-        <Marker
-          onClick={this.onMarkerClick}
-          name={"Shelby Park"}
-          address={"Nashville, TN 37206"}
-          position={{ lat: 36.1676, lng: -86.7297 }}
-          draggable={true}
-          onDragend={this.centerMoved} />
+        <Marker/>
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}

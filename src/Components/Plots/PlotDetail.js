@@ -99,7 +99,7 @@ export default class PlotDetail extends Component {
                                 <Button onClick={() => this.removeYard(plot.id)}>Unclaim Yard</Button> :
                                 null}
 
-                            {role === "Gardener" && plot.gardenerId !== activeUser ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
+                            {role === "Gardener" && plot.gardenerId === null ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
 
 
 
@@ -116,7 +116,7 @@ export default class PlotDetail extends Component {
                                 >
                                 <option value="">Select Tool</option>
                                     {
-                                        this.props.tools.map(tool =>
+                                        this.props.tools.filter(tool => tool.userId === activeUser).map(tool =>
                                             <option key={tool.id} value={tool.id}>{tool.name}</option>
                                         )
                                     }

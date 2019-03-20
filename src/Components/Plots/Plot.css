@@ -2,9 +2,11 @@ html {
     background-color: #F7FFF8;
 }
 
-.body {
-    background-color: rgb(191, 252, 191);
-    /* width: 90%; */
-    margin: 1%;
-    box-sizing: border-box;
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+
