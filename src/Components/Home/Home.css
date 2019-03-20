@@ -2,9 +2,50 @@ html {
     background-color: #F7FFF8;
 }
 
-.maps {
-    width: 60%;
-    height: 60%;
-    float: right;
-    padding: 20px;
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 1px;
+    box-sizing: border-box;
+    position: relative;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.map {
+    height: 295px;
+    display: flex;
+}
+.content {
+    /* flex: 1 0 auto; */
+    padding: 10px;
+}
+
+.blurb {
+    /* position: absolute;
+    top:120px; */
+}
+
+.testimonials {
+    position: absolute;
+    bottom: 20px;
+    border: 1px solid green;
+}
+
+
+.footer {
+    /* flex: 1 0 auto; */
+    border: 1px solid red;
+    background: none;
 }

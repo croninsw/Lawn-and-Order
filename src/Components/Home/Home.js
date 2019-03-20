@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import Maps from "../Images/Nashville-Map.png"
 import Containter from "../GMap/Map"
-import Grass from "../Images/Grass.png"
 import "./Home.css"
 
 
@@ -11,27 +10,43 @@ export default class Home extends Component {
             <React.Fragment>
                 <div className="head">
                     <div className="header__box">
-                        <h1 className="header">Lawn & Order</h1>
+
                     </div>
                 </div>
-                <div className="body">
+                <div className="content">
                     {/* <img src={Maps} className="maps" /> */}
+                    <div className="map">
                     <Containter />
+                    </div>
 
                     <section>
                         <div className="blurb">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus at urna condimentum mattis pellentesque. Diam in arcu cursus euismod quis viverra nibh. Purus in massa tempor nec feugiat. Sed faucibus turpis in eu. Quis varius quam quisque id. Eget lorem dolor sed viverra. Sem integer vitae justo eget magna fermentum. Nec nam aliquam sem et tortor consequat id. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Feugiat vivamus at augue eget. Convallis posuere morbi leo urna. Odio facilisis mauris sit amet massa vitae.
+                            Welcome to Lawn & Order, an application that serves to establish the connection between people who love to garden, but do not have the space for one, with the home owners who have always said, "I'll get to it tomorrow." Today, you can register an account as either a Homeowner or a Gardener and move on to view the rest of the app.
+
+                            As a Homeowner, you will be able to add your yards or plots of land you can dedicate to a garden. You will be able to give dimesions as well as express interests in how the garden develops and which crops you would like to see. If you have multiple properties or fancy a garden in both your front and back yards, you have the ability to add another space.
+
+                            As a Gardener, you will be able to view all previously posted Yards by other Homeowners. Once you have sent the Homeowner a message or have viewed their plot and amenities and agreed on interests, the Gardener can "Claim" a stake in the yard, thereby creating a contract with the Homeowner. The plot thickens...
                         </div>
                     </section>
-                    <section>
+                    <section className="testimonials">
                         <div className="testimonial">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus at urna condimentum mattis pellentesque.
-                        </div>
+                        "Lawn & Order should be nominated for service of the year. The very best."
+                            - Irwin E.
+                            </div>
+                        <div className="testimonial">
+                        "Lawn & Order should be nominated for service of the year. The very best."
+                            - Irwin E.
+                            </div>
+                        <div className="testimonial">
+                        "Lawn & Order should be nominated for service of the year. The very best."
+                            - Irwin E.
+                            </div>
+
+
                     </section>
                 </div>
-                <div className="footer">
-                    <img src={Grass} className="grass" />
-                </div>
+                <footer className="footer">
+                </footer>
             </React.Fragment>
         )
     }

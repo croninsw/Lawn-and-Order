@@ -4,10 +4,11 @@ import PlotSearchFilter from "./PlotSearchFilter";
 
 export default class PlotSearch extends Component {
     render () {
+
         return (
             <React.Fragment>
 
-                <PlotSearchFilter />
+                {/* <PlotSearchFilter plots={this.props.plots} users={this.props.users} tools={this.props.tools} {...this.props} /> */}
 
                 <section className="plots">
                 {
@@ -16,7 +17,20 @@ export default class PlotSearch extends Component {
                     )
                 }
                 </section>
+                <footer></footer>
             </React.Fragment>
         )
     }
 }
+
+
+// updateSearch(event) {
+//     this.setState({ search: event.target.value })
+// }
+
+// render() {
+//     let filteredPlots = this.props.plots.filter(
+//         (plot) => {
+//             return plot.Object.keys(plot).indexOf(this.state.search !== -1  )
+
+//     })

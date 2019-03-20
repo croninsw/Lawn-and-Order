@@ -22,6 +22,7 @@ export default class ResourceList extends Component {
                         )
                     }
                 </section>
+                <footer></footer>
             </React.Fragment>
         )
     }

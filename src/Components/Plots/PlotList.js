@@ -63,6 +63,7 @@ export default class PlotList extends Component {
                     </section>
                 </div>
                 </div>
+                <footer></footer>
             </React.Fragment >
         )
     }
