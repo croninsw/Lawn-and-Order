@@ -27,7 +27,8 @@ export default class PlotDetail extends Component {
     newTool = evt => {
         const specificTool = {
             plotId: parseInt(this.props.match.params.plotId),
-            toolId: parseInt(this.state.tool)
+            toolId: parseInt(this.state.tool),
+            userId: parseInt(sessionStorage.getItem("credentials"))
         }
 
         this.props.addPlotTool(specificTool)
@@ -59,6 +60,7 @@ export default class PlotDetail extends Component {
         const plotOwner = this.props.users.find(user => user.id === plot.userId) || {}
         const plotGardener = this.props.users.find(user => user.id === plot.gardenerId) || {}
         const tool = this.props.tools
+        const user = this.props.users
         return (
             <React.Fragment>
                 <div>
@@ -94,7 +96,7 @@ export default class PlotDetail extends Component {
                                 </React.Fragment> : null}
 
                             {role === "Gardener" && plot.gardenerId === activeUser ?
-                                <Button onClick={() => this.removeYard(plot.id)}>Delete</Button> :
+                                <Button onClick={() => this.removeYard(plot.id)}>Unclaim Yard</Button> :
                                 null}
 
                             {role === "Gardener" && plot.gardenerId !== activeUser ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
@@ -119,14 +121,14 @@ export default class PlotDetail extends Component {
                                         )
                                     }
                                 </select>
-                                <Button onClick={() => this.newTool(tool.id, plot.id)}>Add</Button>
+                                <Button onClick={() => this.newTool(tool.id, plot.id, user.id)}>Add</Button>
                             </FormGroup> : null}
 
                             <section className="plotTools">
 
                                 {
                                     this.props.plotTools.filter(plotTool => plotTool.plotId === plot.id).map(plotTool =>
-                                        <PlotToolCard deletePlotTool={this.props.deletePlotTool} key={plotTool.id} value={plotTool.id} tools={this.props.tools} plotTool={plotTool} {...this.props} />
+                                        <PlotToolCard deletePlotTool={this.props.deletePlotTool} key={plotTool.id} value={plotTool.id} tools={this.props.tools} users={this.props.users} plotTool={plotTool} {...this.props} />
                                     )
                                 }
                             </section>

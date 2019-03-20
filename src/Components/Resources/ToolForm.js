@@ -3,7 +3,8 @@ import React, { Component } from "react";
 export default class ToolForm extends Component {
     // Set initial state
     state = {
-        name: []
+        name: "",
+        userId: ""
     }
 
     // Update state whenever an input field is edited
@@ -18,7 +19,8 @@ export default class ToolForm extends Component {
         evt.preventDefault();
 
         const tool = {
-            name: this.state.name
+            name: this.state.name,
+            userId: parseInt(sessionStorage.getItem("credentials"))
         }
 
         // Create the tool and redirect user to resource list
