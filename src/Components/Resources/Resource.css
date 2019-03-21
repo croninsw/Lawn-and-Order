@@ -4,3 +4,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.toolList {
+    display: flex;
+    flex-direction: row;
+}
+
+.tools {
+    align-content: space-around;
+}

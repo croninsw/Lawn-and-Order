@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Maps from "../Images/Nashville-Map.png"
 import Containter from "../GMap/Map"
 import "./Home.css"
+import SimpleMap from "../GMap/Map";
 
 
 export default class Home extends Component {
@@ -16,7 +17,8 @@ export default class Home extends Component {
                 <div className="content">
                     {/* <img src={Maps} className="maps" /> */}
                     <div className="map">
-                    <Containter />
+                    {/* <Containter /> */}
+                    <SimpleMap />
                     </div>
 
                     <section>
@@ -45,8 +47,6 @@ export default class Home extends Component {
 
                     </section>
                 </div>
-                <footer className="footer">
-                </footer>
             </React.Fragment>
         )
     }

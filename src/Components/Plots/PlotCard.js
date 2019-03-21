@@ -14,7 +14,7 @@ export default class PlotCard extends Component {
             <React.Fragment>
                 <div>
                     <Card key={plot.id}>
-                        <CardImg top width="100%" src={(plot.image)} alt="Plot image" />
+                        {/* <CardImg top width="100%" src={(plot.image)} alt="Plot image" /> */}
                         <CardBody>
                             <CardTitle>Address: {plot.address}</CardTitle>
                             <CardSubtitle>Total Square Footage: {plot.total_sqFeet} sq. ft.</CardSubtitle>

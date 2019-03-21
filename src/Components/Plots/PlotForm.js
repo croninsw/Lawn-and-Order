@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
+import "./Plot.css"
 
 export default class PlotForm extends Component {
     // Set initial state
