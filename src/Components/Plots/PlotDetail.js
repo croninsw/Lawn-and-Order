@@ -5,6 +5,7 @@ import {
     CardTitle, CardSubtitle, Button, Label, FormGroup
 } from "reactstrap"
 import PlotToolCard from "../Resources/PlotToolCard"
+import "./Plot.css"
 
 export default class PlotDetail extends Component {
 

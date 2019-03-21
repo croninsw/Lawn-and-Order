@@ -1,6 +1,6 @@
-html {
+/* html {
     background-color: #F7FFF8;
-}
+} */
 
 html, body {
     height: 100%;
@@ -9,11 +9,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    margin: 1px;
-    box-sizing: border-box;
-    position: relative;
     justify-content: space-between;
-    border: 1px solid black;
 }
 
 #root {
@@ -24,17 +20,20 @@ body {
 }
 
 .map {
-    height: 295px;
-    display: flex;
+    float: right;
+
 }
 .content {
     /* flex: 1 0 auto; */
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .blurb {
-    /* position: absolute;
-    top:120px; */
+    justify-content: flex-end;
+    align-content: flex-start;
 }
 
 .testimonials {
@@ -43,9 +42,3 @@ body {
     border: 1px solid green;
 }
 
-
-.footer {
-    /* flex: 1 0 auto; */
-    border: 1px solid red;
-    background: none;
-}

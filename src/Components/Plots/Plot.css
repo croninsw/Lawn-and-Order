@@ -7,6 +7,19 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: #F7FFF8;
+
+
 }
+
+body {
+    padding: 10px;
+    background-image: url("../Images/grass-background.jpg");
+}
+
+/* footer {
+    background-image: url("../Images/grass-background.jpg");
+} */
+
 
 
