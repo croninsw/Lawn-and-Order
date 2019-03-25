@@ -5,6 +5,7 @@ import {
   FormGroup, Label, Input,
   Button,
 } from "reactstrap"
+import { Redirect } from "react-router-dom"
 import "./Login.css"
 
 export default class Login extends Component {
@@ -15,7 +16,8 @@ export default class Login extends Component {
     role: "",
     firstName: "",
     lastName: "",
-    email: ""
+    email: "",
+    redirect: false,
   }
 
   handleFieldChange = evt => {
@@ -64,6 +66,9 @@ export default class Login extends Component {
             sessionStorage.setItem("credentials", parseInt(user[0].id))
             sessionStorage.setItem("role", user[0].role)
             this.props.setAuth()
+            this.setState((prevState) => {
+              return {redirect: true}
+            })
           }
         }
         )
@@ -75,6 +80,12 @@ export default class Login extends Component {
 
 
   render() {
+    if (this.state.redirect === true) {
+      return (
+        <Redirect to="/" />
+      )
+    }
+    else {
     return (
       <React.Fragment>
         <header>
@@ -200,7 +211,7 @@ export default class Login extends Component {
       </React.Fragment>
     )
   }
-
+  }
 }
 
 

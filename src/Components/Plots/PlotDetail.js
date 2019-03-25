@@ -88,9 +88,9 @@ export default class PlotDetail extends Component {
 
                             {role === "Homeowner" && plot.userId === activeUser ?
                                 <React.Fragment>
-                                    <Button onClick={() => this.props.history.push(`/plots/${plot.id}/edit`)}>Edit Yard</Button>
+                                    <Button color="info" onClick={() => this.props.history.push(`/plots/${plot.id}/edit`)}>Edit Yard</Button>
 
-                                    <Button onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete Yard</Button>
+                                    <Button color="warning" onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete Yard</Button>
 
                                     <hr />
                                 </React.Fragment> : null}
