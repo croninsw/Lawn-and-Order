@@ -17,10 +17,15 @@ export default class PlotToolCard extends Component {
                                     (tool.find(tool => tool.id === plotTool.toolId) || {}).name
                                 }
                                 </h5>
-{((role === "Homeowner" && plot.userId === plotTool.userId) || (plot.gardenerId === plotTool.userId)) ? <Button type="button"
+
+{((plot.userId === plotTool.userId) && (role === "Homeowner")) ? <Button type="button"
 className=""
 onClick={() => this.props.deletePlotTool(plotTool.id)}
-className="">Remove</Button> : null}
+className="">Remove Tool</Button> : null}
+{((plot.gardenerId === plotTool.userId) && (role === "Gardener")) ? <Button type="button"
+className=""
+onClick={() => this.props.deletePlotTool(plotTool.id)}
+className="">Remove Tool</Button> : null}
 
 
 
