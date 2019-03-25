@@ -9,6 +9,7 @@ import {
     NavLink,
     DropdownItem
 } from "reactstrap"
+import { Redirect } from "react-router-dom"
 
 export default class NavBar extends Component {
 
@@ -17,7 +18,8 @@ export default class NavBar extends Component {
 
         this.toggle = this.toggle.bind(this)
         this.state = {
-            isOpen: false
+            isOpen: false,
+            redirect: false
         }
     }
     toggle() {
@@ -28,10 +30,18 @@ export default class NavBar extends Component {
 
     logout = () => {
         sessionStorage.clear("credentials")
-        this.props.setAuth()
+        // this.props.setAuth()
+        this.setState((prevState) => {
+            return {redirect: true}
+        })
+
     }
 
     render() {
+        if (this.state.redirect === true) {
+           return( <Redirect to="/" /> )
+        }
+        else {
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -61,5 +71,6 @@ export default class NavBar extends Component {
                 </Navbar>
             </div>
         )
+        }
     }
 }
