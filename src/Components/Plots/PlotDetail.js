@@ -22,7 +22,6 @@ export default class PlotDetail extends Component {
         }
 
         this.props.patchPlot(claimedPlot)
-            .then(() => this.props.history.push("/plots"))
     }
 
     newTool = evt => {
@@ -44,7 +43,7 @@ export default class PlotDetail extends Component {
         }
 
         this.props.patchPlot(removeClaim)
-            .then(() => this.props.history.push("/plots"))
+            .then(() => this.props.history.push("/plots/search"))
     }
 
     handleFieldChange = evt => {
@@ -75,55 +74,54 @@ export default class PlotDetail extends Component {
                             <CardSubtitle>Available Square Feet: {plot.avail_sqFeet} sq. ft.</CardSubtitle>
                             <CardText>Notes: {plot.notes}</CardText>
                             <CardSubtitle>
-                            Preferred Crop:
+                                Preferred Crop:
                              <ul>
-                            <li>{plot.anyAll === true ?  "Any or All" : null}</li>
-                            <li>{plot.fruit === true ?  "Fruit" : null}</li>
-                            <li>{plot.vegetables === true ?  "Vegetables" : null}</li>
-                            <li>{plot.flowers === true ?  "Flowers" : null}</li>
-                            <li>{plot.herbs === true ?  "Herbs" : null}</li>
-                            </ul>
+                                    <li>{plot.anyAll === true ? "Any or All" : null}</li>
+                                    <li>{plot.fruit === true ? "Fruit" : null}</li>
+                                    <li>{plot.vegetables === true ? "Vegetables" : null}</li>
+                                    <li>{plot.flowers === true ? "Flowers" : null}</li>
+                                    <li>{plot.herbs === true ? "Herbs" : null}</li>
+                                </ul>
                             </CardSubtitle>
 
                             <hr />
 
                             {role === "Homeowner" && plot.userId === activeUser ?
                                 <React.Fragment>
-                                    <Button onClick={() => this.props.history.push(`/plots/${plot.id}/edit`)}>Edit</Button>
+                                    <Button onClick={() => this.props.history.push(`/plots/${plot.id}/edit`)}>Edit Yard</Button>
 
-                                    <Button onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete</Button>
+                                    <Button onClick={() => this.props.deletePlot(plot.id).then(() => this.props.history.push("/plots/search"))}>Delete Yard</Button>
 
                                     <hr />
                                 </React.Fragment> : null}
 
+                            {role === "Gardener" && plot.gardenerId === null ? <Button onClick={() =>
+                                this.claimYard(plot.id)}>Claim Yard</Button> : null}
+
                             {role === "Gardener" && plot.gardenerId === activeUser ?
-                                <Button onClick={() => this.removeYard(plot.id)}>Unclaim Yard</Button> :
+                                <Button onClick={() =>
+                                    this.removeYard(plot.id)}>Unclaim Yard</Button> :
                                 null}
 
-                            {role === "Gardener" && plot.gardenerId === null ? <Button onClick={() => this.claimYard(plot.id)}>Claim Yard</Button> : null}
-
-
-
-
                             {activeUser === plot.gardenerId || activeUser === plot.userId ?
-                            <FormGroup>
-                                <Label for="tools">Add New Tool to Plot</Label>
+                                <FormGroup>
+                                    <Label for="tools">Add New Tool to Plot</Label>
 
-                                <select onChange={this.handleFieldChange}
-                                    type="tools"
-                                    id="tool"
-                                    placeholder={"Tools"}
-                                    required=""
-                                >
-                                <option value="">Select Tool</option>
-                                    {
-                                        this.props.tools.filter(tool => tool.userId === activeUser).map(tool =>
-                                            <option key={tool.id} value={tool.id}>{tool.name}</option>
-                                        )
-                                    }
-                                </select>
-                                <Button onClick={() => this.newTool(tool.id, plot.id, user.id)}>Add</Button>
-                            </FormGroup> : null}
+                                    <select onChange={this.handleFieldChange}
+                                        type="tools"
+                                        id="tool"
+                                        placeholder={"Tools"}
+                                        required=""
+                                    >
+                                        <option value="">Select Tool</option>
+                                        {
+                                            this.props.tools.filter(tool => tool.userId === activeUser).map(tool =>
+                                                <option key={tool.id} value={tool.id}>{tool.name}</option>
+                                            )
+                                        }
+                                    </select>
+                                    <Button onClick={() => this.newTool(tool.id, plot.id, user.id)}>Add Tool</Button>
+                                </FormGroup> : null}
 
                             <section className="plotTools">
 
@@ -133,12 +131,7 @@ export default class PlotDetail extends Component {
                                     )
                                 }
                             </section>
-
-
-
-
                         </CardBody>
-
                     </Card>
                 </div>
             </React.Fragment>
