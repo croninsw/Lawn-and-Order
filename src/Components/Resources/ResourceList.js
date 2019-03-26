@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import ToolCard from "./ToolCard"
 import "../Tools/Tool.css"
+import { Container, Row, Col, Button } from "reactstrap"
 
 export default class ResourceList extends Component {
     render() {
@@ -8,25 +9,26 @@ export default class ResourceList extends Component {
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         return (
             <React.Fragment>
-                <div className="toolList">
-                    <section className="tools">
+                <Container>
+                <Row className="toolList">
+                    <Col md={10} className="tools">
                         {
                             this.props.tools.filter(tool => tool.userId === activeUser).map(tool =>
                                 <ToolCard key={tool.id} tool={tool} {...this.props} />
                             )
                         }
-                    </section>
-                </div>
+                    </Col>
+                </Row>
 
 
-                <div className="">
-                    <button type="button"
+                <Row className="">
+                    <Button color="warning" type="button"
                         onClick={() => this.props.history.push("/tools/new")}
                         className="newToolButton">
                         Add a New Tool
-                </button>
-                </div>
-
+                </Button>
+                </Row>
+                </Container>
                 <footer></footer>
             </React.Fragment>
         )

@@ -10,6 +10,7 @@ import {
     DropdownItem
 } from "reactstrap"
 import { Redirect } from "react-router-dom"
+import "./Nav.css"
 
 export default class NavBar extends Component {
 
@@ -44,26 +45,26 @@ export default class NavBar extends Component {
         else {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">Lawn & Order</NavbarBrand>
+                <Navbar light expand="md">
+                    <NavbarBrand className="text-success" id="navBrand" href="/">Lawn & Order</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/plots/search">Yard Search</NavLink>
+                                <NavLink className="text-success" href="/plots/search">Yard Search</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/plots">My Yards</NavLink>
+                                <NavLink className="text-success" href="/plots">My Gardens</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/users">Green Thumbs</NavLink>
+                                <NavLink className="text-success" href="/users">Green Thumbs</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/resources">Resources</NavLink>
+                                <NavLink className="text-success" href="/resources">Tool List</NavLink>
                             </NavItem>
                             <DropdownItem divider />
                             <NavItem>
-                                <NavLink onClick={this.logout}>Logout</NavLink>
+                                <NavLink className="text-success" onClick={this.logout}>Logout</NavLink>
                             </NavItem>
 
                         </Nav>

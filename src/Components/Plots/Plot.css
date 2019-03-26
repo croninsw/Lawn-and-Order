@@ -1,25 +1,18 @@
-html {
-    background-color: #F7FFF8;
+.scroll {
+    overflow: scroll;
 }
 
-#root {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #F7FFF8;
-
-
+.hidden {
+    overflow: hidden;
 }
 
-body {
-    padding: 10px;
-    background-image: url("../Images/grass-background.jpg");
+.pl-header {
+    font-family: 'Oswald', sans-serif;
 }
 
-/* footer {
-    background-image: url("../Images/grass-background.jpg");
-} */
+.pc-card {
+    background-color: rgba(156, 197, 161, .25);
+}
 
 
 

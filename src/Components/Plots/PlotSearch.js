@@ -8,9 +8,7 @@ export default class PlotSearch extends Component {
         return (
             <React.Fragment>
 
-                {/* <PlotSearchFilter plots={this.props.plots} users={this.props.users} tools={this.props.tools} {...this.props} /> */}
-
-                <section className="plots">
+                <section className="plots scroll">
                 {
                     this.props.plots.map(plot =>
                         <PlotCard key={plot.id} plot={plot} {...this.props} />

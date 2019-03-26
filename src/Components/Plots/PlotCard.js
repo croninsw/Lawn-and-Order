@@ -3,6 +3,7 @@ import {
     Card, CardText, CardImg, CardBody,
     CardTitle, CardSubtitle, Button
 } from "reactstrap"
+import "./Plot.css"
 
 export default class PlotCard extends Component {
 
@@ -15,7 +16,7 @@ export default class PlotCard extends Component {
                 <div>
                     <Card key={plot.id}>
                         {/* <CardImg top width="100%" src={(plot.image)} alt="Plot image" /> */}
-                        <CardBody>
+                        <CardBody className="pc-card">
                             <CardTitle>Address: {plot.address}</CardTitle>
                             <CardSubtitle>Total Square Footage: {plot.total_sqFeet} sq. ft.</CardSubtitle>
                             <CardSubtitle>Available Square Feet: {plot.avail_sqFeet} sq. ft.</CardSubtitle>
@@ -30,7 +31,7 @@ export default class PlotCard extends Component {
                             <li>{plot.herbs === true ?  "Herbs" : null}</li>
                             </ul>
                             </CardSubtitle>
-                            <Button onClick={() => this.props.history.push(`/plots/detail/${plot.id}`)}>View Details</Button>
+                            <Button color="info" onClick={() => this.props.history.push(`/plots/detail/${plot.id}`)}>View Details</Button>
                         </CardBody>
                     </Card>
                 </div>

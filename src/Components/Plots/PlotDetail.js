@@ -64,7 +64,7 @@ export default class PlotDetail extends Component {
         return (
             <React.Fragment>
                 <div>
-                    <Card key={plot.id}>
+                    <Card key={plot.id} className="pd-card">
                         {/* <CardImg top width="100%" src={} alt="Plot image" /> */}
                         <CardBody>
                             <CardTitle><div>Address: {plot.address}</div></CardTitle>
@@ -134,6 +134,7 @@ export default class PlotDetail extends Component {
                         </CardBody>
                     </Card>
                 </div>
+                <footer></footer>
             </React.Fragment>
         )
     }

@@ -1,41 +1,33 @@
-html {
-    background-color: #F7FFF8;
+#root {
+    background-color: rgba(211, 234, 216, 0.92);
 }
 
-header {
+body {
+
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url("../Images/grass-background.jpg");
+}
+
+/* .header {
     border: 1px solid black;
-    height: 150px;
-}
+} */
 
-
-#body {
-    display: flex;
-    justify-content: space-around;
-    align-content: space-around;
-    /* flex-direction: row; */
-}
-
-#loginContainer {
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 30%;
-    padding: 20px;
-    flex-basis: 38%;
-    height: 75%;
-}
-#registerContainer {
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 30%;
-    padding: 20px;
-    flex-basis: 38%;
+.headerTitle {
+    font-family: 'Oswald', sans-serif;
+    color: #1F2421;
+    font-weight: 600;
+    font-size: 100px;
+    padding-top: 25px;
+    padding-left: 150px;
+    width: 100%;
 }
 
 .title {
-    font-size: 40px;
-    padding-left: 180px;
+    font-family: 'Oswald', sans-serif;
 }
 
-.login-btn {
-    padding-left: 200px;
+#containers {
+    padding-top: 70px;
 }

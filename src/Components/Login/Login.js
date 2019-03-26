@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import UserManager from "../../Modules/UserManager"
 import {
-  Container, Col, Form,
+  Container, Col, Row, Form,
   FormGroup, Label, Input,
   Button,
 } from "reactstrap"
@@ -67,11 +67,11 @@ export default class Login extends Component {
             sessionStorage.setItem("role", user[0].role)
             this.props.setAuth()
             this.setState((prevState) => {
-              return {redirect: true}
+              return { redirect: true }
             })
           }
         }
-        )
+      )
     } else {
       alert("Please fill out the form")
     }
@@ -86,131 +86,148 @@ export default class Login extends Component {
       )
     }
     else {
-    return (
-      <React.Fragment>
-        <header>
-          <h1>Lawn & Order</h1>
-        </header>
-        <div id="body">
-          <section id="loginContainer">
-              <h2 className="title">Sign In</h2>
-            <Container className="loginContainer clearfix">
-              <Form className="form">
-                <Col>
-                  <FormGroup>
-                    <Label for="username">Username</Label>
-                    <Input
-                      type="username"
-                      name="username"
-                      className="title"
-                      id="username"
-                      placeholder={"username"}
-                      onChange={this.handleFieldChange}
+      return (
+        <React.Fragment>
+          <Container className="body">
+            <Row>
+              <Col md={12} className="header">
+              <h1 className="headerTitle">LAWN & ORDER</h1>
+              </Col>
+            </Row>
+            <Row id="containers">
+              <Col md={6} id="loginContainer">
+                <h2 className="title">Sign In</h2>
+                <Container className="clearfix">
+                  <Form className="form">
+                    <Col>
+                      <FormGroup>
+                        <Label for="username">Username</Label>
+                        <Input
+                          type="username"
+                          name="username"
+                          className="title"
+                          id="username"
+                          placeholder={"username"}
+                          onChange={this.handleFieldChange}
 
-                    />
-                  </FormGroup>
-                </Col>
-                <Col>
-                  <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input
-                      type="password"
-                      name="password"
-                      className="title"
-                      id="password"
-                      placeholder={"password"}
-                      onChange={this.handleFieldChange}
-                    />
-                  </FormGroup>
-                </Col>
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col>
+                      <FormGroup>
+                        <Label for="password">Password</Label>
+                        <Input
+                          type="password"
+                          name="password"
+                          className="title"
+                          id="password"
+                          placeholder={"password"}
+                          onChange={this.handleFieldChange}
+                        />
+                      </FormGroup>
+                    </Col>
 
-                <Button type="submit" className="login-btn" onClick={this.handleLogin}>Sign In</Button>
-              </Form>
-            </Container>
-          </section>
-          <section id="registerContainer">
-          <h2 className="title">Register</h2>
-            <Container className="registerContainer clearfix">
-              <Form className="form">
-                <Col>
-                  <FormGroup>
-                    <Label for="firstName">First Name</Label>
-                    <Input
-                      type="firstName"
-                      name="firstName"
-                      className="title"
-                      id="firstName"
-                      placeholder={"John"}
-                      onChange={this.handleFieldChange}
+                    <Button type="submit" className="login-btn" onClick={this.handleLogin}>Sign In</Button>
+                  </Form>
+                </Container>
+              </Col>
+              <Col md={6} id="registerContainer">
+                <h2 className="title">Register</h2>
+                <Container className="clearfix">
+                  <Form className="form">
+                    <Col>
+                      <FormGroup>
+                        <Label for="firstName">First Name</Label>
+                        <Input
+                          type="firstName"
+                          name="firstName"
+                          className="title"
+                          id="firstName"
+                          placeholder={"Steve"}
+                          onChange={this.handleFieldChange}
 
-                    />
-                  </FormGroup>
-                </Col>
-                <Col>
-                  <FormGroup>
-                    <Label for="lastName">Last Name</Label>
-                    <Input
-                      type="lastName"
-                      name="lastName"
-                      className="title"
-                      id="lastName"
-                      placeholder={"Smith"}
-                      onChange={this.handleFieldChange}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col>
+                      <FormGroup>
+                        <Label for="lastName">Last Name</Label>
+                        <Input
+                          type="lastName"
+                          name="lastName"
+                          className="title"
+                          id="lastName"
+                          placeholder={"Brownlee"}
+                          onChange={this.handleFieldChange}
 
-                    />
-                  </FormGroup>
-                </Col>
-                <Col>
-                  <FormGroup>
-                    <Label for="username">Username</Label>
-                    <Input
-                      type="username"
-                      name="username"
-                      className="title"
-                      id="username"
-                      placeholder={"Krackatoa"}
-                      onChange={this.handleFieldChange}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col>
+                      <FormGroup>
+                        <Label for="username">Username</Label>
+                        <Input
+                          type="username"
+                          name="username"
+                          className="title"
+                          id="username"
+                          placeholder={"Chortlehoort"}
+                          onChange={this.handleFieldChange}
 
-                    />
-                  </FormGroup>
-                </Col>
-                <Col>
-                  <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input
-                      type="password"
-                      name="password"
-                      className="title"
-                      id="password"
-                      placeholder={"cats"}
-                      onChange={this.handleFieldChange}
-                    />
-                  </FormGroup>
-                </Col>
-                <Col>
-                  <FormGroup>
-                    <Label for="role">Role</Label>
-                    <select onChange={this.handleFieldChange}
-                      type="role"
-                      id="role"
-                      placeholder={"Role"}
-                      required="">
-                      <option id="null">Please Select Role</option>
-                      <option id="homeowner">Homeowner</option>
-                      <option id="gardener">Gardener</option>
-                    </select>
-                  </FormGroup>
-                </Col>
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col>
+                      <FormGroup>
+                        <Label for="password">Password</Label>
+                        <Input
+                          type="password"
+                          name="password"
+                          className="title"
+                          id="password"
+                          placeholder={"cats"}
+                          onChange={this.handleFieldChange}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col>
+                      <FormGroup>
+                        <Label for="role">Are you a Homeowner with a yard to offer, or a
+                                          Gardener looking to get dirty?</Label>
+                        <select onChange={this.handleFieldChange}
+                          type="role"
+                          id="role"
+                          placeholder={"Role"}
+                          required="">
+                          <option id="null">Please Select Role</option>
+                          <option id="homeowner">Homeowner</option>
+                          <option id="gardener">Gardener</option>
+                        </select>
+                      </FormGroup>
+                    </Col>
 
-                <Button type="submit" className="register-btn" onClick={this.handleRegister}>Register</Button>
-              </Form>
-            </Container>
-          </section>
-        </div>
-        <footer></footer>
-      </React.Fragment>
-    )
-  }
+                    <Button type="submit" className="register-btn" onClick={this.handleRegister}>Register</Button>
+                  </Form>
+                </Container>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={4}></Col>
+              <Col md={4}></Col>
+              <Col md={4}></Col>
+            </Row>
+            <Row>
+              <Col md={4}></Col>
+              <Col md={4}></Col>
+              <Col md={4}></Col>
+            </Row>
+
+            <footer></footer>
+          </Container>
+        </React.Fragment>
+      )
+    }
   }
 }
 
