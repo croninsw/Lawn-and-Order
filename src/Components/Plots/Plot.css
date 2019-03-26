@@ -1,4 +1,18 @@
+.scroll {
+    overflow: scroll;
+}
 
+.hidden {
+    overflow: hidden;
+}
+
+.pl-header {
+    font-family: 'Oswald', sans-serif;
+}
+
+.pc-card {
+    background-color: rgba(156, 197, 161, .25);
+}
 
 
 

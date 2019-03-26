@@ -17,7 +17,7 @@ export default class UserCard extends Component {
 
                                 <img src={user.img} className="user_img" />
                                 {activeUser === user.id ?
-                                <Button onClick={() => this.props.history.push("/users/profile/edit")}>Update Profile Info</Button> : <Button type="button"
+                                <Button color="warning" onClick={() => this.props.history.push("/users/profile/edit")}>Update Profile Info</Button> : <Button color="info" type="button"
                                         className=""
                                         onClick={() => this.props.history.push(`/users/profile/${user.id}`)}
                                         className="">View Profile</Button>}

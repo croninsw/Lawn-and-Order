@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import UserCard from "./UserCard"
 import "./User.css"
+import { Container, Row, Col } from "reactstrap"
 
 
 export default class UserList extends Component {
@@ -9,8 +10,8 @@ export default class UserList extends Component {
         return (
             <React.Fragment>
 
-                <div className="userContainer">
-                    <section className="users">
+                <Container className="userContainer">
+                    <section className="users scroll">
                         {
                             this.props.users.map(user =>
                                 <UserCard key={user.id} user={user} {...this.props} />
@@ -21,7 +22,7 @@ export default class UserList extends Component {
                         }
 
                     </section>
-                </div>
+                </Container>
                 <footer></footer>
             </React.Fragment>
         )

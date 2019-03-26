@@ -1,10 +1,12 @@
 import React, { Component } from "react"
 import PlotCard from "./PlotCard"
 import {
-
+    Container,
+    Col,
+    Row,
     FormGroup,
     Button,
-  } from "reactstrap"
+} from "reactstrap"
 import "./Plot.css"
 
 export default class PlotList extends Component {
@@ -14,7 +16,7 @@ export default class PlotList extends Component {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
-      }
+    }
 
 
     render() {
@@ -23,47 +25,63 @@ export default class PlotList extends Component {
 
         return (
             <React.Fragment>
-                <div className="body">
-                    <h2 className="title__text">
-                        My Yards
-                </h2>
+                <Container className="body hidden">
+                    <Row>
+                        {role === "Homeowner" ? <h2 className="pl-header">
+                            My Yards
+                </h2> : <h2 className="pl-header">
+                                My Gardens
+                </h2>}
 
-                <section className="myYards">
-                    {
-                        this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
-                        <PlotCard key={plot.id} plot={plot} {...this.props} />
-                            )
-                    }
-                </section>
-                    <h5>
-                        Add a new yard, yard maintenance, and general stuff
-                </h5>
+                        <Col>
+                            {role === "Homeowner" ? <h5>
+                                Homeowners can Add a new Yard and Edit current Yards
+                    </h5> : <h5>
+                                    Gardeners can view their current Gardens and Add Tools
+                    </h5>}
 
-                    <div className="">
-                        {role === "Homeowner" ?
-                            <React.Fragment>
-                                <FormGroup>
-                                    <Button type="button"
-                                        onClick={() => this.props.history.push("/plots/new")}
-                                        className="newPlotButton">
-                                        Publish New Plot
-                            </Button>
-                                </FormGroup>
-                            </React.Fragment>
-                            : null}
-                    </div>
+                        </Col>
+                    </Row>
+                    <Row>
 
-                <div>
-                    <section className="plots">
-                        {
-                            this.props.plots.filter(plots => plots.gardenerId === activeUser).map(plot =>
-                                <PlotCard key={plot.id} plot={plot} {...this.props} />
-                            )
-                        }
-                    </section>
-                </div>
-                </div>
-                <footer></footer>
+<Col>
+    <div className="">
+        {role === "Homeowner" ?
+            <React.Fragment>
+                <FormGroup>
+                    <Button color="success" type="button"
+                        onClick={() => this.props.history.push("/plots/new")}
+                        className="newPlotButton">
+                        Publish New Plot
+    </Button>
+                </FormGroup>
+            </React.Fragment>
+            : null}
+    </div>
+</Col>
+</Row>
+
+                    <Row>
+                        <Col md={12} className="myYards">
+                            {
+                                this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
+                                    <PlotCard key={plot.id} plot={plot} {...this.props} />
+                                )
+                            }
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col md={12} className="plots">
+                            {
+                                this.props.plots.filter(plots => plots.gardenerId === activeUser).map(plot =>
+                                    <PlotCard key={plot.id} plot={plot} {...this.props} />
+                                )
+                            }
+                        </Col>
+                    </Row>
+                </Container>
+                        <footer></footer>
             </React.Fragment >
         )
     }

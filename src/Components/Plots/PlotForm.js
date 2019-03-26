@@ -121,7 +121,7 @@ export default class PlotForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <Form>
+                <Form classname="scroll">
                     <legend>Add New Yard Plot</legend>
                     <FormGroup>
                         <Label for="address">Address</Label>
