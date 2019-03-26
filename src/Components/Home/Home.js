@@ -26,20 +26,24 @@ export default class Home extends Component {
                     <Row>
 
                     </Row>
-                    <section className="testimonials">
-                        <div className="testimonial">
-                            "Lawn & Order should be nominated for service of the year. The very best."
-                                - Irwin E.
-                            </div>
-                        <div className="testimonial">
-                            "Lawn & Order should be nominated for service of the year. The very best."
-                                - Irwin E.
-                            </div>
-                        <div className="testimonial">
-                            "Lawn & Order should be nominated for service of the year. The very best."
-                                - Irwin E.
-                            </div>
 
+                    <section className="testimonials">
+                    <Row className="testimonial">
+                            "Lawn & Order should be nominated for service of the year. The very best."
+                                - Irwin E.
+                            </Row>
+                            <Row className="testimonial">
+
+                            "Another fantastic app that lets me organize more of my space. Would reccommend!"
+                                - Karen C.
+
+                            </Row>
+                            <Row className="testimonial">
+
+                            "Lawn & Order can really take the stress out of gardening. We have a new house and didn't have the time to landscape, but wanted to save a little money as well. We paired with a gardener almost immediately and the rest is history.."
+                                - Jimmy H.
+
+                            </Row>
 
                     </section>
                 </Container>

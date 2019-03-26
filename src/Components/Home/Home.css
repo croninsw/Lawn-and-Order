@@ -1,5 +1,14 @@
 .body {
+    padding-top: 50px;
     padding-bottom: 250px;
+}
+
+#root {
+    overflow: scroll;
+}
+
+.testimonials {
+    padding-bottom: 50px;
 }
 
 
