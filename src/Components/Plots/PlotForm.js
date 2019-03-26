@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
+import { storage } from "../Firebase/Index"
 import "./Plot.css"
 
 export default class PlotForm extends Component {
@@ -11,7 +12,9 @@ export default class PlotForm extends Component {
         total_sqFeet: [],
         avail_sqFeet: [],
         notes: [],
-        image: [],
+        image: null,
+        url: "",
+        progress: 0,
         anyAll: false,
         fruit: false,
         vegetables: false,
@@ -54,6 +57,36 @@ export default class PlotForm extends Component {
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
+
+    // Update state when image uploader changes
+    handleChange = evt => {
+        if (evt.target.files[0]) {
+          const image = evt.target.files[0]
+          this.setState(() => ({image}))
+        }
+      }
+    // Create upload task and run through motions on ".on"
+    handleUpload = () => {
+    const {image} = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on('state_changed',
+    (snapshot) => {
+        // progrss function ....
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        this.setState({progress});
+    },
+    (error) => {
+            // error function ....
+        console.log(error);
+    },
+    () => {
+        // complete function ....
+        storage.ref('images').child(image.name).getDownloadURL().then(url => {
+            console.log(url);
+            this.setState({url});
+        })
+    });
+}
 
 
 
@@ -108,7 +141,8 @@ export default class PlotForm extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="image">File</Label>
-                        <Input type="file" name="image" id="image" onChange={this.handleFieldChange}/>
+                        <Input type="file" name="image" id="image" onChange={this.handleChange}/>
+                        <Button color="info" onClick={this.handleUpload}>Upload</Button>
                         <FormText color="muted">
                             Photos of the plot and property to highlight amenities and layout.
 </FormText>

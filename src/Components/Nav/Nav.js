@@ -44,26 +44,26 @@ export default class NavBar extends Component {
         else {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">Lawn & Order</NavbarBrand>
+                <Navbar light expand="md">
+                    <NavbarBrand className="text-success" href="/">Lawn & Order</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/plots/search">Yard Search</NavLink>
+                                <NavLink className="text-success" href="/plots/search">Yard Search</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/plots">My Yards</NavLink>
+                                <NavLink className="text-success" href="/plots">My Yards</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/users">Green Thumbs</NavLink>
+                                <NavLink className="text-success" href="/users">Users</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/resources">Resources</NavLink>
+                                <NavLink className="text-success" href="/resources">Resources</NavLink>
                             </NavItem>
                             <DropdownItem divider />
                             <NavItem>
-                                <NavLink onClick={this.logout}>Logout</NavLink>
+                                <NavLink className="text-muted" onClick={this.logout}>Logout</NavLink>
                             </NavItem>
 
                         </Nav>
