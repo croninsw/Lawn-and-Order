@@ -88,7 +88,7 @@ export default class Login extends Component {
     else {
       return (
         <React.Fragment>
-          <Container className="body">
+          <Container className="body hidden">
             <Row>
               <Col md={12} className="header">
               <h1 className="headerTitle">LAWN & ORDER</h1>

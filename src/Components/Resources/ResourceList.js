@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import ToolCard from "./ToolCard"
+import ToolCard from "../Resources/ToolCard"
 import "../Tools/Tool.css"
 import { Container, Row, Col, Button } from "reactstrap"
 

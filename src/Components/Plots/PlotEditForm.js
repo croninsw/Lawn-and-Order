@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import PlotManager from "../../Modules/PlotManager";
+import React, { Component } from "react"
+import PlotManager from "../../Modules/PlotManager"
+import { storage } from "../Firebase/Index"
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
 import "./Plot.css"
 
@@ -11,6 +12,9 @@ export default class PlotEditForm extends Component {
         total_sqFeet: "",
         avail_sqFeet: "",
         notes: "",
+        image: "",
+        url: "",
+        progress: 0,
         image: "",
         anyAll: "",
         fruit: "",
@@ -55,6 +59,37 @@ export default class PlotEditForm extends Component {
         }))
       }
 
+        // Update state when image uploader changes
+    handleImageChange = evt => {
+        if (evt.target.files[0]) {
+          const image = evt.target.files[0]
+          this.setState(() => ({image}))
+        }
+      }
+    // Create upload task and run through motions on ".on"
+    handleUpload = () => {
+    const {image} = this.state
+    const uploadTask = storage.ref(`images/${image.name}`).put(image)
+    uploadTask.on('state_changed',
+    (snapshot) => {
+        // progress function ....
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        this.setState({progress})
+    },
+    (error) => {
+            // error function ....
+        console.log(error);
+    },
+    () => {
+        // complete function ....
+        storage.ref('images').child(image.name).getDownloadURL().then(url => {
+            console.log(url)
+            this.setState({url})
+        })
+    })
+}
+
+
     updateExistingPlot = evt => {
         evt.preventDefault();
 
@@ -66,7 +101,7 @@ export default class PlotEditForm extends Component {
             total_sqFeet: this.state.total_sqFeet,
             avail_sqFeet: this.state.avail_sqFeet,
             notes: this.state.notes,
-            image: this.state.image,
+            image: this.state.url,
             anyAll: this.state.anyAll,
             fruit: this.state.fruit,
             vegetables: this.state.vegetables,
@@ -122,11 +157,17 @@ export default class PlotEditForm extends Component {
                         <Input type="textarea" name="notes" id="notes" placeholder="" value={this.state.notes} onChange={this.handleFieldChange}  />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="image">File</Label>
-                        <Input type="file" name="image" id="image" />
                         <FormText color="muted">
-                            Upload photos of the plot and property to highlight amenities and layout.
-</FormText>
+                            Add a photo of the plot and property to highlight amenities and layout.
+                        </FormText>
+                        <Label for="image">File</Label>
+                        <Input type="file" name="image" id="image" onChange={this.handleImageChange}/>
+                        <br />
+                        <Button color="info" onClick={this.handleUpload}>Upload</Button>
+                        <br />
+                        <progress value = "0" max="100"/>
+                        <br/>
+                        <img src={this.state.url || "https://via.placeholder.com/200"} width="200" height="200"/>
 
                     </FormGroup>
                     <legend>Preferred Garden Bounty</legend>

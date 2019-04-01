@@ -25,7 +25,7 @@ export default class PlotList extends Component {
 
         return (
             <React.Fragment>
-                <Container className="body hidden">
+                <Container className="body scroll">
                     <Row>
                         {role === "Homeowner" ? <h2 className="pl-header">
                             My Yards
@@ -44,44 +44,44 @@ export default class PlotList extends Component {
                     </Row>
                     <Row>
 
-<Col>
-    <div className="">
-        {role === "Homeowner" ?
-            <React.Fragment>
-                <FormGroup>
-                    <Button color="success" type="button"
-                        onClick={() => this.props.history.push("/plots/new")}
-                        className="newPlotButton">
-                        Publish New Plot
+                        <Col>
+                            <div className="">
+                                {role === "Homeowner" ?
+                                    <React.Fragment>
+                                        <FormGroup>
+                                            <Button color="success" type="button"
+                                                onClick={() => this.props.history.push("/plots/new")}
+                                                className="newPlotButton">
+                                                Publish New Plot
     </Button>
-                </FormGroup>
-            </React.Fragment>
-            : null}
-    </div>
-</Col>
-</Row>
+                                        </FormGroup>
+                                    </React.Fragment>
+                                    : null}
+                            </div>
+                        </Col>
+                    </Row>
 
-                    <Row>
-                        <Col md={12} className="myYards">
+                    <Row className="myYards">
+
                             {
                                 this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
                                     <PlotCard key={plot.id} plot={plot} {...this.props} />
                                 )
                             }
-                        </Col>
+
                     </Row>
 
-                    <Row>
-                        <Col md={12} className="plots">
+                    <Row className="myGardens">
+
                             {
                                 this.props.plots.filter(plots => plots.gardenerId === activeUser).map(plot =>
                                     <PlotCard key={plot.id} plot={plot} {...this.props} />
                                 )
                             }
-                        </Col>
+
                     </Row>
                 </Container>
-                        <footer></footer>
+                <footer></footer>
             </React.Fragment >
         )
     }

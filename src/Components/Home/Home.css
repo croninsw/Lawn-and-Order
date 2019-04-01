@@ -1,5 +1,26 @@
 .body {
-    padding-bottom: 250px;
+    padding-top: 45px;
+    padding-bottom: 90px;
+    font-family: 'Signika', sans-serif;
+}
+
+#root {
+    overflow: scroll;
+}
+
+.testimonials {
+    padding-bottom: 40px;
+    font-family: 'Signika', sans-serif;
+}
+
+#punchline {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.footer {
+    background-color: green;
 }
 
 
