@@ -14,5 +14,20 @@
     background-color: rgba(156, 197, 161, .25);
 }
 
+.pd-card {
+    padding: 2%;
+    margin: 2%;
+}
+
+.pc-image {
+    max-width: 475px;
+    max-height: 300px;
+}
+
+.pd-wholeCard {
+
+    width: 100%;
+}
+
 
 

@@ -20,15 +20,3 @@ export default class PlotSearch extends Component {
         )
     }
 }
-
-
-// updateSearch(event) {
-//     this.setState({ search: event.target.value })
-// }
-
-// render() {
-//     let filteredPlots = this.props.plots.filter(
-//         (plot) => {
-//             return plot.Object.keys(plot).indexOf(this.state.search !== -1  )
-
-//     })

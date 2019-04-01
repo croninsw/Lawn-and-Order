@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
+import { Button, Form, FormGroup, Label, Input, FormText, Media } from "reactstrap"
 import { storage } from "../Firebase/Index"
 import "./Plot.css"
 
@@ -59,7 +59,7 @@ export default class PlotForm extends Component {
     }
 
     // Update state when image uploader changes
-    handleChange = evt => {
+    handleImageChange = evt => {
         if (evt.target.files[0]) {
           const image = evt.target.files[0]
           this.setState(() => ({image}))
@@ -67,23 +67,23 @@ export default class PlotForm extends Component {
       }
     // Create upload task and run through motions on ".on"
     handleUpload = () => {
-    const {image} = this.state;
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    const {image} = this.state
+    const uploadTask = storage.ref(`images/${image.name}`).put(image)
     uploadTask.on('state_changed',
     (snapshot) => {
-        // progrss function ....
-        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        this.setState({progress});
+        // progress function ....
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        this.setState({progress})
     },
     (error) => {
             // error function ....
-        console.log(error);
+        console.log(error)
     },
     () => {
         // complete function ....
         storage.ref('images').child(image.name).getDownloadURL().then(url => {
-            console.log(url);
-            this.setState({url});
+            console.log(url)
+            this.setState({url})
         })
     });
 }
@@ -104,7 +104,7 @@ export default class PlotForm extends Component {
             total_sqFeet: this.state.total_sqFeet,
             avail_sqFeet: this.state.avail_sqFeet,
             notes: this.state.notes,
-            image: this.state.image,
+            image: this.state.url,
             anyAll: this.state.anyAll,
             fruit: this.state.fruit,
             vegetables: this.state.vegetables,
@@ -121,7 +121,7 @@ export default class PlotForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <Form classname="scroll">
+                <Form className="scroll">
                     <legend>Add New Yard Plot</legend>
                     <FormGroup>
                         <Label for="address">Address</Label>
@@ -140,12 +140,17 @@ export default class PlotForm extends Component {
                         <Input type="notes" name="notes" id="notes" onChange={this.handleFieldChange}/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="image">File</Label>
-                        <Input type="file" name="image" id="image" onChange={this.handleChange}/>
-                        <Button color="info" onClick={this.handleUpload}>Upload</Button>
                         <FormText color="muted">
-                            Photos of the plot and property to highlight amenities and layout.
-</FormText>
+                            Add a photo of the plot and property to highlight amenities and layout.
+                        </FormText>
+                        <Label for="image">File</Label>
+                        <Input type="file" name="image" id="image" onChange={this.handleImageChange}/>
+                        <br />
+                        <Button color="info" onClick={this.handleUpload}>Upload</Button>
+                        <br />
+                        <progress value = "0" max="100"/>
+                        <br/>
+                        <img src={this.state.url || "https://via.placeholder.com/200"} width="200" height="200"/>
 
                     </FormGroup>
 

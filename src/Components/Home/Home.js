@@ -13,7 +13,10 @@ export default class Home extends Component {
                 <Container className="content">
                     <Row className="body">
                         <Col md={7} className="blurb">
-                                Welcome to Lawn & Order, an application that serves to establish the connection between people who love to garden, but do not have the space for one, with the home owners who have always said, "I'll get to it tomorrow." Today, you can register an account as either a Homeowner or a Gardener and move on to view the rest of the app.
+                                <span id="punchline">Welcome to Lawn & Order, an application that serves to establish the connection between people who love to garden, but do not have the space for one, with the home owners who have always said, "I'll get to it tomorrow." </span>
+                                <br/>
+                                <br/>
+                                Today, you can register an account as either a Homeowner or a Gardener and move on to view the rest of the app.
 
                                 As a Homeowner, you will be able to add your yards or plots of land you can dedicate to a garden. You will be able to give dimesions as well as express interests in how the garden develops and which crops you would like to see. If you have multiple properties or fancy a garden in both your front and back yards, you have the ability to add another space.
 
@@ -47,7 +50,7 @@ export default class Home extends Component {
 
                     </section>
                 </Container>
-                <footer></footer>
+                <footer className="footer hidden"></footer>
             </React.Fragment>
         )
     }
