@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button } from "reactstrap"
+import { Button, Col } from "reactstrap"
 
 export default class UserCard extends Component {
 
@@ -7,7 +7,9 @@ export default class UserCard extends Component {
         const user = this.props.user
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         return (
-            <section className="user">
+            <React.Fragment>
+
+            <section className="uc-user">
                 {
                         <div key={user.id} className="">
                             <div className="">
@@ -28,6 +30,8 @@ export default class UserCard extends Component {
                 }
                 <hr />
             </section>
+
+            </React.Fragment>
         )
     }
 }

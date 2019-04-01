@@ -16,7 +16,7 @@ export default class PlotCard extends Component {
             <React.Fragment>
 
                         <Col md={3}>
-                        <Card key={plot.id}>
+                        <Card key={plot.id} id="card">
                             <CardImg className="pc-image" top width="100%" src={(plot.image)} alt="Plot image" />
                             <CardBody className="pc-card">
                                 <CardTitle>Address: {plot.address}</CardTitle>
@@ -37,6 +37,7 @@ export default class PlotCard extends Component {
                             </CardBody>
                         </Card>
                         </Col>
+
                         <br />
 
 

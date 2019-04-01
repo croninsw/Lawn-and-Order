@@ -1,0 +1,15 @@
+.chatApp {
+    overflow: scroll;
+    width: 95%;
+    margin-left: 2.2%;
+    margin-bottom: 2.2%;
+}
+
+.send-message-form {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    background-image: url("../Images/grass-background.jpg");
+}

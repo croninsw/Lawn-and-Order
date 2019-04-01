@@ -25,19 +25,20 @@ export default class PlotList extends Component {
 
         return (
             <React.Fragment>
-                <Container className="body scroll">
+                <Container className="body">
                     <Row>
-                        {role === "Homeowner" ? <h2 className="pl-header">
-                            My Yards
+                        <div className="pl-header">
+                            {role === "Homeowner" ? <h2 className="pl-header">
+                                My Yards
                 </h2> : <h2 className="pl-header">
-                                My Gardens
+                                    My Gardens
                 </h2>}
-
+                        </div>
                         <Col>
                             {role === "Homeowner" ? <h5>
-                                Homeowners can Add a new Yard and Edit current Yards
+                                Homeowners can add a new yard and edit current yards
                     </h5> : <h5>
-                                    Gardeners can view their current Gardens and Add Tools
+                                    Gardeners can view their current gardens and add tools
                     </h5>}
 
                         </Col>
@@ -61,25 +62,25 @@ export default class PlotList extends Component {
                         </Col>
                     </Row>
 
-                    <Row className="myYards">
+                    <Container className="plots">
 
-                            {
-                                this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
-                                    <PlotCard key={plot.id} plot={plot} {...this.props} />
-                                )
-                            }
+                        {
+                            this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
+                                <PlotCard key={plot.id} plot={plot} {...this.props} />
+                            )
+                        }
 
-                    </Row>
 
-                    <Row className="myGardens">
 
-                            {
-                                this.props.plots.filter(plots => plots.gardenerId === activeUser).map(plot =>
-                                    <PlotCard key={plot.id} plot={plot} {...this.props} />
-                                )
-                            }
 
-                    </Row>
+
+                        {
+                            this.props.plots.filter(plots => plots.gardenerId === activeUser).map(plot =>
+                                <PlotCard key={plot.id} plot={plot} {...this.props} />
+                            )
+                        }
+
+                    </Container>
                 </Container>
                 <footer></footer>
             </React.Fragment >

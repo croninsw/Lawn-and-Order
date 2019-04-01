@@ -33,20 +33,3 @@ export default class SimpleMap extends Component {
   }
 }
 
-
-
-// "locations": [
-//   {
-//     "id": 1,
-//     "lat": "",
-//     "lng": ""
-//   }
-// ]
-
-// const location = this.props.locations
-
-// location.map(location => {
-//   <AnyReactComponent
-//     lat={location.lat}
-//     lng={location.lng}
-// })

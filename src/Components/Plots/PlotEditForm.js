@@ -167,7 +167,7 @@ export default class PlotEditForm extends Component {
                         <br />
                         <progress value = "0" max="100"/>
                         <br/>
-                        <img src={this.state.url || "https://via.placeholder.com/200"} width="200" height="200"/>
+                        <img value={this.state.url || "https://via.placeholder.com/200"} width="200" height="200"/>
 
                     </FormGroup>
                     <legend>Preferred Garden Bounty</legend>

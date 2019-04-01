@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import ChatManager from "../../Modules/ChatManager"
 import { Form, Button, Input } from "reactstrap"
+import "./Chat.css"
 
 export default class Chat extends Component {
 
@@ -49,10 +50,10 @@ export default class Chat extends Component {
             className="send-message-form">
             <Input
               onChange={this.handleFieldChange}
-            //   value={this.state.messages}
               placeholder="Type message and hit Submit"
               id="text"
               type="text" />
+              <br />
               <Button onClick={() => this.newMessage()}>Submit</Button>
           </Form>
         )

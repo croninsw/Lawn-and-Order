@@ -5,5 +5,17 @@
     justify-content: space-between;
 }
 
+.hidden {
+    overflow: hidden;
+}
+
+.uc-user {
+    display: flex;
+    /* border: 1px solid black; */
+    padding: 20px;
+    margin: 20px;
+}
+
+
 
 
