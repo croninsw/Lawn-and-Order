@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import { Button } from "reactstrap"
-import Chat from "../Chat/Chat";
+import { Button, Container, Row, Col } from "reactstrap"
+import "./User.css"
 
 export default class UserCard extends Component {
 
@@ -10,7 +10,10 @@ export default class UserCard extends Component {
         return (
             <section className="user">
                 {
-                        <div key={user.id} className="">
+                    <Container>
+                        <Row>
+                            <Col md={6}>
+                        <div key={user.id} className="user-profile">
                             <div className="">
                                 <h5 className="">{user.firstName} {user.lastName}</h5>
                                 <img src={user.img} className="user_img" />
@@ -24,6 +27,9 @@ export default class UserCard extends Component {
                             </div>
 
                         </div>
+                        </Col>
+                        </Row>
+                        </Container>
                 }
                 <hr />
             </section>

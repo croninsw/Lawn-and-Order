@@ -50,7 +50,7 @@ export default class Home extends Component {
 
                     </section>
                 </Container>
-                <footer className="footer hidden"></footer>
+                <footer></footer>
             </React.Fragment>
         )
     }

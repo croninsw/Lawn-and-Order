@@ -11,17 +11,23 @@ export default class UserList extends Component {
             <React.Fragment>
 
                 <Container className="userContainer">
-                    <section className="users scroll">
-                        {
-                            this.props.users.map(user =>
-                                <UserCard key={user.id} user={user} {...this.props} />
+                    <Row>
+                        <Col md={12}>
 
-                            )
+                        <section className="ul-user">
+                            {
+                                this.props.users.map(user =>
+                                    <UserCard key={user.id} user={user} {...this.props} />
+
+                                )
 
 
-                        }
+                            }
 
-                    </section>
+                        </section>
+                        </Col>
+                    </Row>
+
                 </Container>
                 <footer></footer>
             </React.Fragment>
