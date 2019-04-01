@@ -1,68 +1,29 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Client-Side Capstone for Cohort 30 @Nashville Software School
 
-In the project directory, you can run:
+Lawn & Order was built to help connect homeowners with the space to garden, but not the time or the interest, with gardeners who are willing to meet and garden on someone else's property. In this application a user can:
 
-### `npm start`
+### `register as either a Homeowner or Gardener`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A user is prompted upon registration to select either the Homeowner or Gardener role. The application has split views depending on which role the user chose. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### `post yards as a Homeowner`
 
-### `npm test`
+A Homeowner is allowed to add as many yards as they have space available. If the Homeowner has multiple properties, they may differentiate their yards by address but unify them under their username. Version 2.0 will allow users to search by username.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `claim plots as a Gardener `
 
-### `npm run build`
+A Gardener is able to claim a plot which assigns their username to the plot card and registers them in the database as the sole gardener of that plot. Version 2.0 will include multiple Gardeners on one plot.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `add tools`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Both sets of users are able to add and remove tools that they have added to a yard/plot they are assigned to. No one else is able to make edits to the details of that space. A Homeowner may not edit a Gardeners tools, and vice versa. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `edit/view profiles and send messages`
 
-### `npm run eject`
+Users can exchange information via private messaging. They are able to access and message anyone registered on the application for ease of access to plots.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `view resources`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Currently, the only resources a user may view and edit are Tools. A user is urged to add the tools they plan to use on all of their gardens (both as a Homeowner and a Gardener) and may divy those tools up to their respective gardens. The Resource tab serves as a clear "toolbox" for available resources.
