@@ -91,7 +91,7 @@ export default class Login extends Component {
           <Container className="body hidden">
             <Row>
               <Col md={12} className="header">
-              <h1 className="headerTitle">AWN & ORDER</h1>
+              <h1 className="headerTitle">LAWN & ORDER</h1>
               </Col>
             </Row>
             <Row id="containers">
