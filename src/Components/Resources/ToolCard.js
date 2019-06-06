@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Col } from "reactstrap"
+import { Button, Col, Card, CardImg, CardTitle, CardBody, CardSubtitle } from "reactstrap"
 
 export default class ResourceCard extends Component {
     render() {
@@ -8,14 +8,17 @@ export default class ResourceCard extends Component {
             <Col className="tool">
                 {
                         <div key={tool.id} className="">
-                            <div className="">
-                                <h5 className="">{tool.name}</h5>
-                                    <img src={tool.img} className="tool_img" />
-                                    <Button color="info" type="button"
-                                        className=""
-                                        onClick={() => this.props.deleteTool(tool.id)}
-                                        className="">Remove</Button>
-                            </div>
+                            <Card>
+                                <CardImg top width="97%" src="src/Components/Images/generic_tool.jpg" alt="Generic tool avatar"/>
+                                <CardBody>
+                                    <CardTitle className="">{tool.name}</CardTitle>
+                                    <CardSubtitle>{tool.desc}</CardSubtitle>
+                                        <Button color="info" type="button"
+                                            className=""
+                                            onClick={() => this.props.deleteTool(tool.id)}
+                                            className="">Remove</Button>
+                                </CardBody>
+                            </Card>
                         </div>
                 }
             </Col>
