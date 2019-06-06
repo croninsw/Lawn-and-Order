@@ -4,6 +4,7 @@ export default class ToolForm extends Component {
     // Set initial state
     state = {
         name: "",
+        desc: "",
         userId: ""
     }
 
@@ -34,7 +35,7 @@ export default class ToolForm extends Component {
             <React.Fragment>
                 <form className="toolForm">
                     <div className="form-group">
-                        <label htmlFor="plotAdress">Tool Name</label>
+                        <label htmlFor="toolName">Tool Name</label>
                         <input
                             type="text"
                             required
@@ -42,6 +43,15 @@ export default class ToolForm extends Component {
                             onChange={this.handleFieldChange}
                             id="name"
                             placeholder="Hammer"
+                        />
+                        <label htmlFor="toolDescription">Description</label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            onChange={this.handleFieldChange}
+                            id="desc"
+                            placeholder="Old, worn and rusty"
                         />
                     </div>
 

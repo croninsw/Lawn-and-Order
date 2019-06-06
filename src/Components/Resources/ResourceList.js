@@ -5,13 +5,13 @@ import { Container, Row, Col, Button } from "reactstrap"
 
 export default class ResourceList extends Component {
     render() {
-        const role = sessionStorage.getItem("role")
+        // const role = sessionStorage.getItem("role")
         const activeUser = parseInt(sessionStorage.getItem("credentials"))
         return (
             <React.Fragment>
                 <Container>
                 <Row className="toolList">
-                    <Col md={10} className="tools">
+                    <Col md={12} className="tools">
                         {
                             this.props.tools.filter(tool => tool.userId === activeUser).map(tool =>
                                 <ToolCard key={tool.id} tool={tool} {...this.props} />
