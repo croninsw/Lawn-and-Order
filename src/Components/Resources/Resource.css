@@ -12,4 +12,44 @@
 
 .tools {
     align-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+/* Plot CSS That I want to incorporate */
+
+.scroll {
+    overflow: scroll;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.tc-header {
+    font-family: 'Oswald', sans-serif;
+}
+
+.tc-card {
+    background-color: rgba(156, 197, 161, .25);
+}
+
+.td-card {
+    padding: 2%;
+    margin: 2%;
+}
+
+.tc-image {
+    max-width: 475px;
+    max-height: 300px;
+}
+
+#card {
+    margin: auto;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+
+
+

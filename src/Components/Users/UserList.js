@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import UserCard from "./UserCard"
 import "./User.css"
-import { Container, Row, Col } from "reactstrap"
+import { Container, Row, CardDeck } from "reactstrap"
 
 
 export default class UserList extends Component {
@@ -9,23 +9,15 @@ export default class UserList extends Component {
 
         return (
             <React.Fragment>
-
                 <Container className="userContainer">
-                    <Row>
-                        <Col md={12}>
-
-                        <section className="ul-user">
+                    <Row className="userList">
+                        <CardDeck md={12} id="users">
                             {
                                 this.props.users.map(user =>
                                     <UserCard key={user.id} user={user} {...this.props} />
-
                                 )
-
-
                             }
-
-                        </section>
-                        </Col>
+                        </CardDeck>
                     </Row>
 
                 </Container>
