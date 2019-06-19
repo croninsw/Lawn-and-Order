@@ -5,24 +5,20 @@ export default class ResourceCard extends Component {
     render() {
         const tool = this.props.tool
         return (
-            <Col className="tool">
-                {
-                        <div key={tool.id} className="">
-                            <Card>
-                                <CardImg top width="97%" src="src/Components/Images/generic_tool.jpg" alt="Generic tool avatar"/>
-                                <CardBody>
-                                    <CardTitle className="">{tool.name}</CardTitle>
+            <Col md={3}>
+                            <Card key={tool.id} id="card">
+                                <CardImg className="tc-image" top width="100%" src="src/Components/Images/generic_tool.jpg" alt="Generic tool avatar"/>
+                                <CardBody className="tc-card">
+                                    <CardTitle>{tool.name}</CardTitle>
                                     <CardSubtitle>{tool.desc}</CardSubtitle>
                                         <Button color="info" type="button"
-                                            className=""
                                             onClick={() => this.props.deleteTool(tool.id)}
-                                            className="">Remove</Button>
+                                           >Remove</Button>
                                 </CardBody>
                             </Card>
-                        </div>
-                }
             </Col>
         )
     }
 }
+
 

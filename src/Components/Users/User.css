@@ -1,3 +1,4 @@
+
 #root {
     height: 100vh;
     display: flex;
@@ -5,19 +6,91 @@
     justify-content: space-between;
 }
 
+.userList {
+    display: flex;
+    flex-direction: row;
+}
+
+.uc-user {
+    align-content: space-around;
+}
+
+.scroll {
+    overflow: scroll;
+}
+
 .hidden {
     overflow: hidden;
 }
 
-.uc-user {
-    display: flex;
-    /* border: 1px solid black; */
-    padding: 20px;
-    margin: 20px;
+.pl-header {
+    font-family: 'Oswald', sans-serif;
 }
 
-/* .user-profile */
+.uc-user {
+    background-color: rgba(156, 197, 161, .25);
+}
 
+.pd-card {
+    padding: 2%;
+    margin: 2%;
+}
+
+.pc-image {
+    max-width: 475px;
+    max-height: 300px;
+}
+
+.pd-wholeCard {
+
+    width: 100%;
+}
+
+#card {
+    margin: auto;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+.users {
+    align-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Plot CSS That I want to incorporate */
+
+.scroll {
+    overflow: scroll;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.uc-header {
+    font-family: 'Oswald', sans-serif;
+}
+
+.uc-card {
+    background-color: rgba(156, 197, 161, .25);
+}
+
+.ud-card {
+    padding: 2%;
+    margin: 2%;
+}
+
+.uc-image {
+    max-width: 475px;
+    max-height: 300px;
+}
+
+#card {
+    margin: auto;
+    padding: 2px;
+    margin-top: 10px;
+}
 
 
 

@@ -6,6 +6,7 @@ import {
     Row,
     FormGroup,
     Button,
+    CardDeck
 } from "reactstrap"
 import "./Plot.css"
 
@@ -62,7 +63,7 @@ export default class PlotList extends Component {
                         </Col>
                     </Row>
 
-                    <Container className="plots">
+                    <CardDeck className="plots">
 
                         {
                             this.props.plots.filter(plots => plots.userId === activeUser).map(plot =>
@@ -80,7 +81,7 @@ export default class PlotList extends Component {
                             )
                         }
 
-                    </Container>
+                    </CardDeck>
                 </Container>
                 <footer></footer>
             </React.Fragment >

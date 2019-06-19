@@ -3,7 +3,7 @@ import ToolListManager from "../../Modules/ToolListManager"
 import {
     Container, Row, Col,
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Label, FormGroup
+    CardTitle, CardSubtitle, Button, Label, FormGroup, CardDeck
 } from "reactstrap"
 import PlotToolCard from "../Resources/PlotToolCard"
 import "./Plot.css"
@@ -67,7 +67,7 @@ export default class PlotDetail extends Component {
                 <div className="pd-wholeCard">
                     <Container>
                         <Row>
-                            <Col md={5}>
+                            <CardDeck md={5} class="w-50">
                                 <Card key={plot.id} className="pd-card">
                                     <CardImg top min-height="255px" min-width="200px" src={plot.image} alt="Plot image" />
                                     <CardBody>
@@ -146,7 +146,7 @@ export default class PlotDetail extends Component {
                                         </Row>
                                     </CardBody>
                                 </Card>
-                            </Col>
+                            </CardDeck>
                         </Row>
 
 
